@@ -37,7 +37,7 @@ data:
   secret: "TU8wbW9lV29wajdYeVdMRw=="
   tokenServiceRootCertBundle: "LS0tLS1CRUdJTiBDRVJUSUZJQ0FURS0tLS0tCk1JSUMzRENDQWNTZ0F3SUJBZ0lCQVRBTkJna3Foa2lHOXcwQkFRc0ZBREFSTVE4d0RRWURWUVFERXdab1lYSmkKYjNJd0hoY05NVGt3TkRJNU1UUXlPRFF5V2hjTk1qQXdOREk0TVRReU9EUXlXakFSTVE4d0RRWURWUVFERXdabwpZWEppYjNJd2dnRWlNQTBHQ1NxR1NJYjNEUUVCQVFVQUE0SUJEd0F3Z2dFS0FvSUJBUURLajZUNllxZWdkY0QrClM4YjNud0txN3N1SHBSNHNRM0YxcTVDSG0zVkh3akJyNUx6TkhhTUM0QW9IbnArakNEOW4wM1JqU1lZNWo2cmwKM1B2c2wvamR0R3d6ak9IRitXRzZMVFc2a29CWmExdDFHRmFtL2MxVkk2aVltUzQ0T3BSYW41b3VwVWViTXp5TgpaeWl5WHYyUHpxVEVQajFYdEx2QjUvS0cxUENnR1ZzSEFTTDFSME1Vem9PM2V2M3VSd1ZIWjlRRjJiL1RYa2FrCjlXYWNLODN2OUVaeC9vNFZYSk5TenBtalR1SFl3eU50MEtXL05GTW5KQnh4QlRxTHBONHJoMW9Nc0pHaGZxT0wKcDc1WGJxa3pxeUFmZGQ2UE93Y0hQTUJ4N1ByQ0FLdk9QOVREeTkvanlCVXJ3bkc3VXJlRHI4RkxrNDRFL1orSQpDSHVZRVY4NUFnTUJBQUdqUHpBOU1BNEdBMVVkRHdFQi93UUVBd0lGb0RBZEJnTlZIU1VFRmpBVUJnZ3JCZ0VGCkJRY0RBUVlJS3dZQkJRVUhBd0l3REFZRFZSMFRBUUgvQkFJd0FEQU5CZ2txaGtpRzl3MEJBUXNGQUFPQ0FRRUEKdEpuRWxhTCtCTFB4VlZ5YzZ4eU5NTGJqK3FqTzMyWERrL0ZobGt6MVNsQXFmSkxET3NzSDZBRUU5TDUzZEpiZApha2ZyYUoxZ2hjVE5vTGJUMnRLc29YNHFHbUtOdU5WQi9lNHJ4SGJqQzZVazZ5TDN2M3JRL1M2VDVPdWVyU09oCmc3TjVPRVBtTENyem9ZaXRqM0hBMjk4ajl0WEh6cW1JRndkNjJTRWpwMWM4ZVBzOVhHMW9aY29kd0RZZlE4aC8KTExiai95dFptNHdqb3pMNTZTUFJ3SGcweCt5OEpraGRaNEVsRjVHM0lzbUlnTUU0M1RuMXJMemxrMldXMmQwdwpvV2dJdkxKS09VVjZOVHNMRWhEcjZscytpTTQ5bHM0TEt1cUV4R2F1TTNyclcrK3lzNndkaG1tZ25kVmtPamJvCnlIRXQ0a2dYU01IZExIU01vOE5zTHc9PQotLS0tLUVORCBDRVJUSUZJQ0FURS0tLS0tCg=="
   tokenServicePrivateKey: "LS0tLS1CRUdJTiBSU0EgUFJJVkFURSBLRVktLS0tLQpNSUlFb2dJQkFBS0NBUUVBeW8rayttS25vSFhBL2t2Rzk1OENxdTdMaDZVZUxFTnhkYXVRaDV0MVI4SXdhK1M4CnpSMmpBdUFLQjU2Zm93Zy9aOU4wWTBtR09ZK3E1ZHo3N0pmNDNiUnNNNHpoeGZsaHVpMDF1cEtBV1d0YmRSaFcKcHYzTlZTT29tSmt1T0RxVVdwK2FMcVZIbXpNOGpXY29zbDc5ajg2a3hENDlWN1M3d2VmeWh0VHdvQmxiQndFaQo5VWRERk02RHQzcjk3a2NGUjJmVUJkbS8wMTVHcFBWbW5Ddk43L1JHY2Y2T0ZWeVRVczZabzA3aDJNTWpiZENsCnZ6UlRKeVFjY1FVNmk2VGVLNGRhRExDUm9YNmppNmUrVjI2cE02c2dIM1hlanpzSEJ6ekFjZXo2d2dDcnpqL1UKdzh2ZjQ4Z1ZLOEp4dTFLM2c2L0JTNU9PQlAyZmlBaDdtQkZmT1FJREFRQUJBb0lCQUc3bzhBQlkvRWVUc2pTSwo4VXFzT2gyMTJxTk8rWkpxNnpqdTA1Z3N1cTZyMlM5NmN4WXNZQkUyOHNieFI1OVE2TWJFdFRtWURIS0FBNmNRCnRLLzdGanp1aVVCQXAyNXErZU9pMVlSdXF2QkxKQ3lkUXZUMGl2VlBMUVZBK2xtM1dYdTFZQXFpWE83Und4bjUKbmdMc21CR2hwLzM3eGtLN3B3S3BLZFpCeWU4ZWVJV2pLNllIaW9RaGh2Q29ZY2YrcWZkbWs5VTlvN01FM0d5egp6SVFidW0xSzd5Tys1R1NEUk5yMFFYekwxVHgzSGhMa2VhbmlrUzNnTWtmK2djQkloRmhGSitaVnF1ckFwU2Q0ClVkRVJQV1N6TTBiRTNyYytpUHhOeEFicDdpa29GOG02MTcwbm41czU4N1dEeldDSStzbHRtN3RYaFBmaHZ3cEsKankwZnZBRUNnWUVBK21ZRThNN1lTTE8wMnhJNnJwcjlXeVN5UXlsbVllRnAxSklBcGU5K3FGZGJMOC9aR1haVQpMbllQUCs4ME1taVFPZmNLSDlwMkdpLzFqLzFPZXYwU0x6clIxSjVMU01idjdEQktPNzJpVmtiZjBQNnI2bmlYCldiWDk4RGNDZHYxeVlJQ3Q4WWdOKzlmTVFQb2ViNDI4NjFSRDZsLzdtbVFUU1dkY2h2R09LT0VDZ1lFQXp4ZXIKa2tmYS9BSWFMZFo3T0ZuUnhPcWhuOWdTOXQzeVpSdDhvbDZaV21HUjg0TzJSdHBrRWxrRCtpOUpVK3VBaXBnNwpBUzYxTHVPWWxybEhyQk5BUkFtTnRqUWM5dVRyV0pZeVllcXRVTnRFd3BuUGlUZ0VuUTlWejdZdDZQYmd3ZkcvCjRMamczdm04NHB2TXJrZFdNZDhza09ucVRqVVY1QUtqMTBLZFNWa0NnWUFtZ2xBYU5NV0FrTnFzb21ZUitsWWkKa1VjMUd3WGE0YzdqMlR4dVNLSGpBK1JMT3h6NVZJQm4wTkpSazlra00zNlMyNUpjQ2I0R0V3QWlEK1BrK0V5MgpwTVltZTkyNktKWTNiY25NM0VJK0lKSkZVeFZmYndKZjBxUm1NQitaNnlxTyt0dEZmUlloZURPNmZuejF6UWVUCjdaYXdVZWlnK3VrWWJlUUdBTnBMSVFLQmdFY0UvQTdIVzU3dTdhRm9tNHRBcWtLWW9HTGJ5KzBqUWp4UVI5YTcKRUdaQmJiY1FKVk41RTdhREZtMFhDRk9pUU12RzF2MVowa0xKUkl2ejhGTmZxcnRxZDFIVDMxY0FQSUY5eUx0eApxb3cvRmY2U2x1eWM3R0FjWVRaQmFNOHEwdnRQOTVpT2JuZXBONUNURTRkMDZXZGkvTHFacllPeWl0Wk4zWGcxCjNSREpBb0dBY1hGankwTk8wdE9jamtwQjhLTVZHbVVFRWJ5TGpzdkIwSHpLUVJXNld5VnhZWGdnc3NNdzNnMUkKdlFsM0QzcFJQeldOdWcxaW1vUWFaRzVxWm9XMThDeFhsZTdhU2FXV1hPUGU2ODY2aHJZcXZPSnJaS1RQU05uMQpuVGRRSllXZkladmo2bERnTVZSSk43cm0xZHVBT2J2aXcxSVROQVJSWWFnVGwzTUp1eTA9Ci0tLS0tRU5EIFJTQSBQUklWQVRFIEtFWS0tLS0tCg=="
-  
+
 ---
 # Source: harbor/templates/database/database-secret.yaml
 apiVersion: v1
@@ -142,10 +142,10 @@ data:
   REGISTRY_STORAGE_PROVIDER_NAME: "filesystem"
   WITH_CHARTMUSEUM: "false"
   CHART_REPOSITORY_URL: "http://harbor-harbor-chartmuseum"
-  # The following properties have no default value in Harbor core if not 
+  # The following properties have no default value in Harbor core if not
   # set via env. They should be removed after the refactoring:
-  # AUTH_MODE, SELF_REGISTRATION, PROJECT_CREATION_RESTRICTION 
-  AUTH_MODE: "db_auth"	
+  # AUTH_MODE, SELF_REGISTRATION, PROJECT_CREATION_RESTRICTION
+  AUTH_MODE: "db_auth"
   SELF_REGISTRATION: "on"
   PROJECT_CREATION_RESTRICTION: "everyone"
   TOKEN_EXPIRATION: "30"
@@ -287,7 +287,7 @@ data:
       upstream notary-server {
         server harbor-harbor-notary-server:4443;
       }
-      
+
       log_format timed_combined 'remote_addr - '
         '"$request" $status $body_bytes_sent '
         '"$http_referer" "$http_user_agent" '
@@ -300,16 +300,16 @@ data:
         # ssl
         ssl_certificate /etc/nginx/cert/tls.crt;
         ssl_certificate_key /etc/nginx/cert/tls.key;
-      
+
         # recommendations from https://raymii.org/s/tutorials/strong_ssl_security_on_nginx.html
         ssl_protocols tlsv1.1 tlsv1.2;
         ssl_ciphers '!aNULL:kECDH+AESGCM:ECDH+AESGCM:RSA+AESGCM:kECDH+AES:ECDH+AES:RSA+AES:';
         ssl_prefer_server_ciphers on;
         ssl_session_cache shared:ssl:10m;
-      
+
         # disable any limits to avoid http 413 for large image uploads
         client_max_body_size 0;
-      
+
         # required to avoid http 411: see issue #1486 (https://github.com/docker/docker/issues/1486)
         chunked_transfer_encoding on;
 
@@ -334,16 +334,16 @@ data:
         # SSL
         ssl_certificate /etc/nginx/cert/tls.crt;
         ssl_certificate_key /etc/nginx/cert/tls.key;
-      
+
         # Recommendations from https://raymii.org/s/tutorials/Strong_SSL_Security_On_nginx.html
         ssl_protocols TLSv1.1 TLSv1.2;
         ssl_ciphers '!aNULL:kECDH+AESGCM:ECDH+AESGCM:RSA+AESGCM:kECDH+AES:ECDH+AES:RSA+AES:';
         ssl_prefer_server_ciphers on;
         ssl_session_cache shared:SSL:10m;
-      
+
         # disable any limits to avoid HTTP 413 for large image uploads
         client_max_body_size 0;
-      
+
         # required to avoid HTTP 411: see Issue #1486 (https://github.com/docker/docker/issues/1486)
         chunked_transfer_encoding on;
 
@@ -352,7 +352,7 @@ data:
           proxy_set_header Host $http_host;
           proxy_set_header X-Real-IP $remote_addr;
           proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
-          
+
           # When setting up Harbor behind other proxy, such as an Nginx instance, remove the below line if the proxy already has similar settings.
           proxy_set_header X-Forwarded-Proto $scheme;
 
@@ -371,7 +371,7 @@ data:
 
           # When setting up Harbor behind other proxy, such as an Nginx instance, remove the below line if the proxy already has similar settings.
           proxy_set_header X-Forwarded-Proto $scheme;
-          
+
           proxy_buffering off;
           proxy_request_buffering off;
         }
@@ -384,7 +384,7 @@ data:
 
           # When setting up Harbor behind other proxy, such as an Nginx instance, remove the below line if the proxy already has similar settings.
           proxy_set_header X-Forwarded-Proto $scheme;
-          
+
           proxy_buffering off;
           proxy_request_buffering off;
         }
@@ -398,7 +398,7 @@ data:
           proxy_set_header Host $http_host;
           proxy_set_header X-Real-IP $remote_addr;
           proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
-          
+
           # When setting up Harbor behind other proxy, such as an Nginx instance, remove the below line if the proxy already has similar settings.
           proxy_set_header X-Forwarded-Proto $scheme;
           proxy_buffering off;
@@ -410,14 +410,14 @@ data:
           proxy_set_header Host $http_host;
           proxy_set_header X-Real-IP $remote_addr;
           proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
-          
+
           # When setting up Harbor behind other proxy, such as an Nginx instance, remove the below line if the proxy already has similar settings.
           proxy_set_header X-Forwarded-Proto $scheme;
 
           proxy_buffering off;
           proxy_request_buffering off;
         }
-      
+
       location /service/notifications {
           return 404;
         }
@@ -426,9 +426,9 @@ data:
           listen 80;
           #server_name harbordomain.com;
           return 301 https://$host$request_uri;
-      } 
+      }
     }
-    
+
 ---
 # Source: harbor/templates/notary/notary-cm.yaml
 
@@ -443,8 +443,8 @@ metadata:
     app: "harbor"
     component: notary
 data:
-  
-  
+
+
   notary-signer-ca.crt: |
     -----BEGIN CERTIFICATE-----
     MIIC8zCCAdugAwIBAgIBATANBgkqhkiG9w0BAQsFADAbMRkwFwYDVQQDExBoYXJi
@@ -464,7 +464,7 @@ data:
     almgMqHuxMJpuFrW9c3UjJefb4lbkr1TBTMbJJCtP17I7qVXcV5HpANCWitYYwDO
     PoGFR50sgVgkfgiVcM/MI4PJ/HnLqdgQBv6u4U5E8Qh05olq9Yb9
     -----END CERTIFICATE-----
-    
+
   notary-signer.crt: |
     -----BEGIN CERTIFICATE-----
     MIIC+zCCAeOgAwIBAgIBATANBgkqhkiG9w0BAQsFADAbMRkwFwYDVQQDExBoYXJi
@@ -484,7 +484,7 @@ data:
     zXGyOWOIERAze15jGD40UwvwDDDI2mudAID7uNxZ8Cbm4QJO+iTBwq/w+jEbHPxV
     2xf4fIdDVzc6bL8evXhzkzdfnxCnK3ghhcFa6SDHfl9jocDGRJSa8G1VU+mF52U=
     -----END CERTIFICATE-----
-    
+
   notary-signer.key: |
     -----BEGIN RSA PRIVATE KEY-----
     MIIEpAIBAAKCAQEAshu2mjipLHL2zHyvGqPLG6+Xa/3dRZEeM+KaRQn3puuLK+AU
@@ -513,7 +513,7 @@ data:
     ve7VxEpDIKz11zINSoOPBUxGur5WJGwRoDSLq9rSSyUhwBbVNHoPvRzruvYDE34+
     iY9E4OeOZFMrOPq1w9WUsLnOhYaH/sg10DaaY3caTY/Ev8TmM7WKzw==
     -----END RSA PRIVATE KEY-----
-    
+
   server-config.postgres.json: |
     {
       "server": {
@@ -591,7 +591,7 @@ data:
         enabled: true
     redis:
       addr: "harbor-harbor-redis:6379"
-      password: 
+      password:
       db: 2
     http:
       addr: :5000
@@ -692,6 +692,27 @@ spec:
     release: harbor
     app: "harbor"
     component: database
+---
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    app: harbor
+    chart: harbor
+    heritage: Tiller
+    release: harbor
+  name: postgres
+spec:
+  ports:
+  - port: 5432
+    protocol: TCP
+    targetPort: 5432
+  selector:
+    app: harbor
+    component: database
+    release: harbor
+  sessionAffinity: None
+  type: ClusterIP
 ---
 # Source: harbor/templates/jobservice/jobservice-svc.yaml
 apiVersion: v1
@@ -886,7 +907,7 @@ spec:
           periodSeconds: 10
         resources:
           null
-          
+
         envFrom:
         - configMapRef:
             name: "harbor-harbor-adminserver"
@@ -973,7 +994,7 @@ spec:
           value: "harbor-harbor-registry,harbor-harbor-core"
         resources:
           null
-          
+
         ports:
         - containerPort: 6060
         volumeMounts:
@@ -1141,7 +1162,7 @@ spec:
           periodSeconds: 10
         resources:
           null
-          
+
         env:
           - name: CORE_SECRET
             valueFrom:
@@ -1222,7 +1243,7 @@ spec:
           periodSeconds: 10
         resources:
           null
-          
+
         ports:
         - containerPort: 80
         - containerPort: 443
@@ -1275,7 +1296,7 @@ spec:
         imagePullPolicy: IfNotPresent
         resources:
           null
-          
+
         env:
         - name: MIGRATIONS_PATH
           value: migrations/server/postgresql
@@ -1331,7 +1352,7 @@ spec:
         imagePullPolicy: IfNotPresent
         resources:
           null
-          
+
         env:
         - name: MIGRATIONS_PATH
           value: migrations/signer/postgresql
@@ -1439,7 +1460,7 @@ spec:
           periodSeconds: 10
         resources:
           null
-          
+
         args: ["serve", "/etc/registry/config.yml"]
         envFrom:
         - secretRef:
@@ -1474,7 +1495,7 @@ spec:
           periodSeconds: 10
         resources:
           null
-          
+
         args: ["serve", "/etc/registry/config.yml"]
         envFrom:
         - secretRef:
@@ -1566,7 +1587,7 @@ spec:
           periodSeconds: 10
         resources:
           null
-          
+
         envFrom:
           - secretRef:
               name: "harbor-harbor-database"
@@ -1622,7 +1643,7 @@ spec:
           periodSeconds: 10
         resources:
           null
-          
+
         volumeMounts:
         - name: data
           mountPath: /var/lib/redis
@@ -1658,7 +1679,6 @@ spec:
 ---
 # Source: harbor/templates/nginx/configmap-http.yaml
 
-    
+
 ---
 # Source: harbor/templates/registry/registry-pvc.yaml
-
