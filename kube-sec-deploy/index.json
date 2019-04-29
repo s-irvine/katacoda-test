@@ -30,23 +30,7 @@
     },
     "finish": {
       "text": "finish.md"
-    },
-    /* "assets": {
-      "client": [
-        {
-          "file": "clair-db/*",
-          "target": "~/clair-db/"
-        },
-        {
-          "file": "demo-api/*",
-          "target": "~/demo-api/"
-        },
-        {
-          "file": "setup/*",
-          "target": "~/setup/"
-        }
-      ]
-    } */
+    }
   },
   "environment": {
     "uilayout": "terminal"
