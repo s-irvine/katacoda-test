@@ -11,3 +11,5 @@ docker pull goharbor/harbor-portal:dev
 docker pull goharbor/registry-photon:dev
 docker pull goharbor/harbor-db:dev
 docker pull goharbor/redis-photon:dev
+
+pwd
