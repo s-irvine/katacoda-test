@@ -32,7 +32,7 @@
       "text": "finish.md"
     },
     "assets": {
-      "client": [
+      "host01": [
         {
           "file": "demo-api/*",
           "target": "~/demo-api/"
