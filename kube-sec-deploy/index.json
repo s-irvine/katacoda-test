@@ -34,12 +34,14 @@
     "assets": {
       "host01": [
         {
-          "file": "demo-api/Dockerfile",
-          "target": "~/demo-api/Dockerfile"
-        },
-        {
           "file": "setup/harbor.yaml",
           "target": "~/setup/harbor.yaml"
+        }
+      ],
+      "host01": [
+        {
+          "file": "demo-api/Dockerfile",
+          "target": "~/demo-api/Dockerfile"
         }
       ]
     }
