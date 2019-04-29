@@ -8,12 +8,20 @@
         "text": "setup.md"
       },
       {
-        "title": "Step 2",
-        "text": "step2.md"
+        "title": "Installing Harbor",
+        "text": "01-Installing-Harbor.md"
       },
       {
-        "title": "Step 3",
-        "text": "step3.md"
+        "title": "Vulnerability Scanning",
+        "text": "02-Vulnerability-Scanning.md"
+      },
+      {
+        "title": "Image Signing",
+        "text": "03-Image-Signing.md"
+      },
+      {
+        "title": "Kubesec",
+        "text": "04-Kubesec.md"
       }
     ],
     "intro": {
