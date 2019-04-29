@@ -11,6 +11,3 @@ docker pull goharbor/harbor-portal:dev
 docker pull goharbor/registry-photon:dev
 docker pull goharbor/harbor-db:dev
 docker pull goharbor/redis-photon:dev
-
-git clone git://github.com/s-irvine/katacoda-test.git workshop
-cp -r workshop/kube-sec/assets/{setup,demo-api,clair-db} /root
