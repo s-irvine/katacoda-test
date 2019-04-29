@@ -42,7 +42,14 @@
   },
   "environment": {
     "uilayout": "terminal",
-    "icon": "fa-kubernetes"
+    "icon": "fa-kubernetes",
+    "dashboards": [
+      {
+        "name": "Harbor",
+        "port": 30003, 
+        "host": "host01"
+      }
+    ]
   },
   "backend": {
     "imageid": "kubernetes"
