@@ -46,7 +46,8 @@
     "dashboards": [
       {
         "name": "Harbor",
-        "port": 30003
+        "port": 30002,
+        "host": "host01"
       }
     ]
   },
