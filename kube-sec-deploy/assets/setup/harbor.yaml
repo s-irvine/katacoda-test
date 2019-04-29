@@ -701,7 +701,7 @@ metadata:
     chart: harbor
     heritage: Tiller
     release: harbor
-  name: postgres
+  name: postgresql
 spec:
   ports:
   - port: 5432
