@@ -36,6 +36,18 @@
         {
           "file": "setup/harbor.yaml",
           "target": "~/setup/harbor.yaml"
+        },
+        {
+          "file": "setup/demo-api.yaml",
+          "target": "~/setup/demo-api.yaml"
+        },
+        {
+          "file": "setup/portieris.yaml",
+          "target": "~/setup/portieris.yaml"
+        },
+        {
+          "file": "setup/webhook.yaml",
+          "target": "~/setup/webhook.yaml"
         }
       ],
       "host01": [
