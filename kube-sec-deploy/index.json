@@ -1,0 +1,41 @@
+{
+  "title": "Kubernetes Secure Deployment",
+  "description": "Workshop for KubeCon Europe (Barcelona) 2019",
+  "details": {
+    "steps": [
+      {
+        "title": "Setup",
+        "text": "setup.md"
+      },
+      {
+        "title": "Step 2",
+        "text": "step2.md"
+      },
+      {
+        "title": "Step 3",
+        "text": "step3.md"
+      }
+    ],
+    "intro": {
+      "text": "intro.md",
+      "courseData": "preload-images.sh",
+    },
+    "finish": {
+      "text": "finish.md"
+    },
+    "assets": {
+      "client": [
+        {
+          "file": "*",
+          "target": "~/"
+        }
+      ]
+    }
+  },
+  "environment": {
+    "uilayout": "terminal"
+  },
+  "backend": {
+    "imageid": "kubernetes"
+  }
+}
