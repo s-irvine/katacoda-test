@@ -37,12 +37,6 @@
           "file": "setup/*",
           "target": "/root/setup"
         }
-      ],
-      "host01": [
-        {
-          "file": "demo-api/*",
-          "target": "/root/demo-api"
-        }
       ]
     }
   },
