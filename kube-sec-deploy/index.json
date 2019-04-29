@@ -31,7 +31,7 @@
     "finish": {
       "text": "finish.md"
     },
-    "assets": {
+    /* "assets": {
       "client": [
         {
           "file": "clair-db/*",
@@ -46,7 +46,7 @@
           "target": "~/setup/"
         }
       ]
-    }
+    } */
   },
   "environment": {
     "uilayout": "terminal"
