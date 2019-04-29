@@ -49,12 +49,6 @@
           "file": "setup/webhook.yaml",
           "target": "~/setup/webhook.yaml"
         }
-      ],
-      "host01": [
-        {
-          "file": "demo-api/Dockerfile",
-          "target": "~/demo-api/Dockerfile"
-        }
       ]
     }
   },
