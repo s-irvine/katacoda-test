@@ -26,7 +26,7 @@
     ],
     "intro": {
       "text": "intro.md",
-      "code": "preload-images.sh"
+      "coourseData": "preload-images.sh"
     },
     "finish": {
       "text": "finish.md"
@@ -36,7 +36,9 @@
         {
           "file": "setup/*",
           "target": "/root/setup"
-        },
+        }
+      ],
+      "host01": [
         {
           "file": "demo-api/*",
           "target": "/root/demo-api"
