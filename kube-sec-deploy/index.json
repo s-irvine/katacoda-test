@@ -28,6 +28,14 @@
         {
           "file": "clair-db/*",
           "target": "~/clair-db/"
+        },
+        {
+          "file": "demo-api/*",
+          "target": "~/demo-api/"
+        },
+        {
+          "file": "setup/*",
+          "target": "~/setup/"
         }
       ]
     }
