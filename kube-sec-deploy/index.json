@@ -30,6 +30,18 @@
     },
     "finish": {
       "text": "finish.md"
+    },
+    "assets": {
+      "client": [
+        {
+          "file": "demo-api/*",
+          "target": "~/demo-api/"
+        },
+        {
+          "file": "setup/*",
+          "target": "~/setup/"
+        }
+      ]
     }
   },
   "environment": {
