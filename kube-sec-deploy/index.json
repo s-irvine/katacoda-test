@@ -26,8 +26,8 @@
     "assets": {
       "client": [
         {
-          "file": "*",
-          "target": "~/"
+          "file": "clair-db/*",
+          "target": "~/clair-db/"
         }
       ]
     }
