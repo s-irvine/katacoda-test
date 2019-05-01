@@ -1,6 +1,8 @@
 {
   "title": "Kubernetes Secure Deployment",
   "description": "Workshop for KubeCon Europe (Barcelona) 2019",
+  "difficulty": "Intermediate",
+  "time": "60-85 minutes",
   "details": {
     "steps": [
       {
