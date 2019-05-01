@@ -45,7 +45,7 @@
   "environment": {
     "uilayout": "terminal",
     "icon": "fa-kubernetes",
-    "showdashboard": false,
+    "showdashboard": true,
     "dashboards": [
       {
         "name": "Harbor",
