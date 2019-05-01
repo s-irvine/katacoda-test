@@ -26,7 +26,7 @@
     ],
     "intro": {
       "text": "intro.md",
-      "coourseData": "preload-images.sh"
+      "courseData": "preload-images.sh"
     },
     "finish": {
       "text": "finish.md"
