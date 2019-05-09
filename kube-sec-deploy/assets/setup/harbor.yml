@@ -14,6 +14,23 @@ type: Opaque
 data:
   CACHE_REDIS_PASSWORD: ""
 ---
+# Source: harbor/templates/common/certificate-secret.yaml
+
+apiVersion: v1
+kind: Secret
+metadata:
+  name: "harbor-harbor-certificate"
+  labels:
+    heritage: Tiller
+    release: harbor
+    chart: harbor
+    app: "harbor"
+type: kubernetes.io/tls
+data:
+  tls.crt: "LS0tLS1CRUdJTiBDRVJUSUZJQ0FURS0tLS0tCk1JSUM4ekNDQWR1Z0F3SUJBZ0lCQVRBTkJna3Foa2lHOXcwQkFRc0ZBREFVTVJJd0VBWURWUVFERXdsb1lYSmkKYjNJdFkyRXdIaGNOTVRrd05UQTVNVEkxTURRd1doY05NakF3TlRBNE1USTFNRFF3V2pBVU1SSXdFQVlEVlFRRApFd2t4TWpjdU1DNHdMakV3Z2dFaU1BMEdDU3FHU0liM0RRRUJBUVVBQTRJQkR3QXdnZ0VLQW9JQkFRQ3VwVDUwCjRnSjlMbGxtc2oyc21yRDhCNkk0Vm9YM2FDVWFGUWwxaG9KRFFoR3VvMVJqV2FDa1YvcldHU01PSFpVM0RGcmMKWUxVaWd1aXk3YjhXRHhmVEhWVHhOQ1hjbnVLTVZxRWpWM2k2RkVxeXVNTG5iU3lWMTZtNDJaY1QzSy9PV3UzRQphb1lWL1grSnFVUUhKbHJTSThDTUJqaGVHR2hrc0FySWRVWHJWdHJHSi9ISWZzYmlwcXhxZWp2eThPTlo5akRJCkd5dTRxTFFOV200MHFoNE11MW5mYWEvdFA4WWRXcnJDcG5HNXV2UDgvMGRwb3BmbjFNN0tDaU5XaDYvVFlMbm8KME1iTkJrQmhwNGxEc0VHV25xL1p1SlpOYmk5UjNEU2lERWZ6elVrUWVJOXB6anZ5T0pOR2JBZi9xRVhweXQ2OAo2QU9BaFlvVzZ1UktraGQvQWdNQkFBR2pVREJPTUE0R0ExVWREd0VCL3dRRUF3SUZvREFkQmdOVkhTVUVGakFVCkJnZ3JCZ0VGQlFjREFRWUlLd1lCQlFVSEF3SXdEQVlEVlIwVEFRSC9CQUl3QURBUEJnTlZIUkVFQ0RBR2h3Ui8KQUFBQk1BMEdDU3FHU0liM0RRRUJDd1VBQTRJQkFRQ29odFUycGQ0bkdJSVp6SUpmRWxuVk12Y3RHSlFaa1IxUwpIVndGcHd1R1Z3ODZVOS9KL0FqYktaWXI0b2gzdGJiZ1Fla2h0UnN2L3BVbWFVbk5iK0xBR2cxV2hhQ2VjWVpCCnhqSmh3U3VHZU1WZCtsa3g5V0kvc1FBZGxITkl4ZnFiSXFmK0oxWjhzNnY5TEJYclZKWVFCaTNHWEtKU2RWVG4KUDdyTi9nSFA5a0lpOVEvTnFnNmlVdEZvVTVkSGpRd3pVVldyMTd3TGQvUjhJN2hZeE9TM3c3dDJFZTlSK2JVYgo1ekFkWUVkcURueTNzZjM1dytvbkZvRnhlaVVROUFhVno0T0lKeGhucXlsWTR0b0VrL3VoT1VDNklHOUdPRW04Cm9HamJLNG9sT2JZZVJXdFNwdVQ3Y3BaQnc1Um1yVHdqb0xUaUEzREljSzNvbzFpcU1RbDUKLS0tLS1FTkQgQ0VSVElGSUNBVEUtLS0tLQo="
+  tls.key: "LS0tLS1CRUdJTiBSU0EgUFJJVkFURSBLRVktLS0tLQpNSUlFb3dJQkFBS0NBUUVBcnFVK2RPSUNmUzVaWnJJOXJKcXcvQWVpT0ZhRjkyZ2xHaFVKZFlhQ1EwSVJycU5VClkxbWdwRmY2MWhrakRoMlZOd3hhM0dDMUlvTG9zdTIvRmc4WDB4MVU4VFFsM0o3aWpGYWhJMWQ0dWhSS3NyakMKNTIwc2xkZXB1Tm1YRTl5dnpscnR4R3FHRmYxL2lhbEVCeVphMGlQQWpBWTRYaGhvWkxBS3lIVkY2MWJheGlmeAp5SDdHNHFhc2Fubzc4dkRqV2ZZd3lCc3J1S2kwRFZwdU5Lb2VETHRaMzJtdjdUL0dIVnE2d3FaeHVicnovUDlICmFhS1g1OVRPeWdvalZvZXYwMkM1Nk5ER3pRWkFZYWVKUTdCQmxwNnYyYmlXVFc0dlVkdzBvZ3hIODgxSkVIaVAKYWM0NzhqaVRSbXdILzZoRjZjcmV2T2dEZ0lXS0Z1cmtTcElYZndJREFRQUJBb0lCQUgvMmZZdkFxZGcwNUxaMQpkUEVLS3hHUE9sSVRPM2Rxckh5dTIwNXNidmQrNmx2T09wL001UUpsb0ZuTTh6MTllWDVySkF3REk5VVVuQkcyClYyTi9UWktYRkV6alM3YWFDQjZSdnVHWlR0RHcyMGFXVCtDbndwcEwrWVNDa2NxdzBYUGVkZ2FMa3BGOE96MlAKYzFQVnk0ZmJRRktZb0NaNXRjdkluUzRCbDJoMTlrazV1YWgwalRBRXVmdUpXYWdiMVIwSGM4RXdxTDE5QkszUQovdHlwbFBoVTYra2FMcndaR2p0Ty9ad0h0QXViRkpHME4wdjNOVjJNNm55UEJPSzN5czA4T2E1SSttcHR2ZXpHCmpYaFgyTUliOFVWM3cySTlvQmNNUEkyWkUxKzQvaDRsNHFtY05OSGlsdTlDQnhSM1V3Szd5a05LOTBNTXZ6MUQKZ0FzeWF0RUNnWUVBenNrMVp5aERXTWhlNEpBc2U4d2crM0FyTTZRSyt1SVFvWnRoK0VHUkdpSEdIcUg4cVd2UwovWTczU25IM3JJY3VTZHczSjNldUd1VCtxeC9CUWFCV29pSWVJMWlqcFJVOWxoTGhYbHMwUEs5VVRxSTJRVE90ClRqcERZL3g3Tnl4TlowOWhBR09VV2IvY0hKeW8xcVMwQ1JCZ2h3dFZDdzUyV1NIVVdhcThEV2NDZ1lFQTJEWFMKSTVLSS9abWpkTDA1dHY3V0JRY2Q4WjNlYXptYlZ0WERHaXltdDBGWjJnT3BYWFRSUlJkazlBYzdscjFTRHJmKwpDM1lzQ0ZhcklIYkMxTDlmcXJ2dTNmZUV2eUxXM0VUb3BnMzdpcDI2QWhtczV5MFVQZWtYUjNMWGtOZDRUVHgrCmE1bmRSeWRTeUhIbGs4OUhlTGFaSnBUOG8wQ2s2V21NeldrRFBpa0NnWUJyWmdsOGVHYnlGNjlmUnNJejBnTlgKVkJ5OEIzbEVjR0ZlN2dybUczZTNjTThyWGNxU1c5UUxxVk02c1JLSDR2WGhtcVJ5dFRBUis5bGhHMjhPSEs2aQpLc0lvYllNZzNIVk9HcVErazNRQUNMZnExMGtDZUVxTWxLb25waHlBdlZ1K1NuWUE4N2M3SGZDK1U0ZEZZK20xCnczRys4ZDNMamtsZFpicWFqNWg0QlFLQmdRQ3A3bHMwRkRiUlExRGlMdHRPeGFvR2w1cGtUWlVEcDJvODdKT0UKWGZYR2NIbWpUVjl2RWFKczhEOHJRUWdIcU5MMnVJdldERkg5VjhqMklnRnRYdUJjKzRwNU1OSkh1NlV0eUljbQpCRFZndENqKy81a1N0UzZFbmsvcW13dHNUcjNCenJyNTdSdXFrZkNSbEZ0Qk9oZk5lNDZSY1dYREZjckhuV3JLCkF6QkdTUUtCZ0Iwbkk5MThrTjlBZjVWYUNEd0dIK2plTWRGWXJidlEwY1ZscjVRWDdyWGFvRlN4eUJPbjhtMHoKZUVlczRMYjFUNGp1aEFzZUE1RE1uZC9TNzlJMTdVNXlwMWRrOFB2MXhHMVVWU2NPRi8vYVJqYmcxTzdKY2V0Mwo5NDFlS3o4QWlaRWVxbUQvZ21NQm1qRTE1RTZlRUNVK1BHTHhoUHE4MjdlQjJkdzZBMFZWCi0tLS0tRU5EIFJTQSBQUklWQVRFIEtFWS0tLS0tCg=="
+  ca.crt: "LS0tLS1CRUdJTiBDRVJUSUZJQ0FURS0tLS0tCk1JSUM1VENDQWMyZ0F3SUJBZ0lCQVRBTkJna3Foa2lHOXcwQkFRc0ZBREFVTVJJd0VBWURWUVFERXdsb1lYSmkKYjNJdFkyRXdIaGNOTVRrd05UQTVNVEkxTURNNVdoY05NakF3TlRBNE1USTFNRE01V2pBVU1SSXdFQVlEVlFRRApFd2xvWVhKaWIzSXRZMkV3Z2dFaU1BMEdDU3FHU0liM0RRRUJBUVVBQTRJQkR3QXdnZ0VLQW9JQkFRQ3d1MXBSCm9HWVhYMElGSml2dmF2cnN2dmtuWER4QVp2NUJONWp4ckhyaG1TNlRpbHU0K0dna0lCd3NieCt4TmlsV0p5NnIKcjhZTlZZeDZ3ZDJLa1hQNzdqcHFUZnBMSktVOEtqRWlvZnF5TzhPbHdPYlM5Z2lSS2szclA5aHcvSG9WYjVxaApIMVowaFFQRmROdVczamZQQUZ3SlRCSko3ZEJWbHN5MUp4VE5pRmZnbmoxOTIzbFFVK29KNkNiYnZHTlpkd0lICnMzL1I4RTdxL003TVNSNXFJNEEvV0ZyblN1M2hYSjRMUkZiSU9RUFJnOXNJTWFCS2NkeW4zdUVRNGJIVDFua0QKY0Z6YTJCeU5pbFlJMHRwK1luaVVVSjllOEdIa1pJd3NkUXVPTHBKUlFMOVdNdjNWdzNyd1A5WnhpVDMzamZ4YwovNjRtRG5qeFp6Q1F2MVFWQWdNQkFBR2pRakJBTUE0R0ExVWREd0VCL3dRRUF3SUNwREFkQmdOVkhTVUVGakFVCkJnZ3JCZ0VGQlFjREFRWUlLd1lCQlFVSEF3SXdEd1lEVlIwVEFRSC9CQVV3QXdFQi96QU5CZ2txaGtpRzl3MEIKQVFzRkFBT0NBUUVBTksyT21nZXZBV2tzT2hjdXlhME9mV2dqUEtRUzFBV1FzN0tiVnl1YTFuazRsRUdiZEREbQpWWUhhZE02Z1RxZEowaE5mM3NyaHRzdDNKSUlEMHBFeDBSOW5CS0xQbzE2UkRGc2xZZ1lxZ1lYaTM5cXY1QU01CmdVeUtURVpOUFNtdXg5NnB6THA1NW54Uno1Y2FXRTVBOUlTNkR2WGRiTk9MY2VzK25SZ0NXMXEzRlU3bjV1emkKakE1bUQ2OVZhOU8xNlZpTzRmTldFeklZT3NqREw0L3J1NFJkdnVQdVMySTgxcjBqUS9RS2Q4MzZxb2F4SXI3bgpCeUs0UmtoWE9tekVNeTd1blliWjVoYlp4VTRCK21mck52U0VBb0lkYlkwVXZGLzRmNDFVWjNsZGlWRE0vLzAvClAyUW05VGNzb0k1TnhBZWtVMVVPUjMzZFREN2JSRm51S3c9PQotLS0tLUVORCBDRVJUSUZJQ0FURS0tLS0tCg=="
+---
 # Source: harbor/templates/core/core-secret.yaml
 apiVersion: v1
 kind: Secret
@@ -27,7 +44,7 @@ metadata:
 type: Opaque
 data:
   secretKey: "bm90LWEtc2VjdXJlLWtleQ=="
-  secret: "SVZzdEdpR2dOMWxSZlNGaA=="
+  secret: "UXFueWE0bHFFVFE4aE1zMA=="
   tls.crt: LS0tLS1CRUdJTiBDRVJUSUZJQ0FURS0tLS0tCk1JSUUwekNDQXJ1Z0F3SUJBZ0lKQVBZL096TE1lVnEyTUEwR0NTcUdTSWIzRFFFQkN3VUFNQUF3SGhjTk1Ua3cKTkRFNE1ESXlOek0zV2hjTk1qa3dOREUxTURJeU56TTNXakFBTUlJQ0lqQU5CZ2txaGtpRzl3MEJBUUVGQUFPQwpBZzhBTUlJQ0NnS0NBZ0VBM3hsVUpzMmIvYUkyTkxveTRPSVErZG4veU1iL085OWlLRFJ5WktwSDhyU09tUytvCkY5dW5tU0F6TDY1WEEvdjZuWTBPTEkvZEFTRGprcWtCcElkVEd6b2dSNWY4VWlCNm9zdUVZN1Y3MVhaZHpXTHIKUGpuSnE2WkxBYW9LbXdHODBXNStXZDZWOFB5Z094NTJta3IxdzdJV0t6KzFaTEk1aXpicHBvbjdYVkdWUmFBVApSdk5aRGlKNkNlSnBjSjVINzIzbGtmNVJ2SldhdFpMQ1lJWURiUmZUaUtzeVEvU2xSY3Y1QlZmSGcvTEpTSDlRCkxHUmhQTUFSbGRsOXd5WkN3WlpESHhoZUk0YSsyNmFhOE1ZM3U5c3QvbDAvT282VkNUR3BNaUVoaUdGMkxWanAKVVdxLytCUDRTRkV2SmZxL0R1aW5JMTM5Vy81YVpaNy9Id1JQbG1ZVTZwWFRSTHlJZzdqZCsxOWZKd1I3WDM3cQp3MG84dDA2RmhqbXJDemFZQ1Vqb1JlcURtSGFObVpOL2Rkdkc3alpXQnUrak5oMFlhdnN5UXlDSVZtdjZ5cVNjCmpQaUQ5dWl2eHFUd2pKaWRJQlJmdVVyejNhRVJRN2NRZ2YwcWhxakl6Zmx6SGJGS2hJTG9jQldxN3p5Tmw5aHIKdlVHVC9XWmN3MHQvT3RNNzJTUGFwbG1UZ1ZiYlFSeGYyVkh6eXB0R0l2dHlkbFhLOHRoeE9NcFhvNGUrU2w4ZAoxZ2RRY0M0b2lzTjlGMjlvTnM4UDV5RlFQLy94WXV2OEM2MDduQ2oxRHpySWQ1YXZHL05WZktCL2ZiREtFRmdOCjJXaEhJblR6UExFY2pGNGZFcmNVQUV1V1cwYnVYLzZGSENHM2lUdHJxeUQ5MktUVkRmTjFKNTZycmNzQ0F3RUEKQWFOUU1FNHdIUVlEVlIwT0JCWUVGRmhOaFRvNFVBQzJQVXNmOGpZYVdqMTYwdkdFTUI4R0ExVWRJd1FZTUJhQQpGRmhOaFRvNFVBQzJQVXNmOGpZYVdqMTYwdkdFTUF3R0ExVWRFd1FGTUFNQkFmOHdEUVlKS29aSWh2Y05BUUVMCkJRQURnZ0lCQU1Bc0V0VmxFTE13ZHRjaWZIZU9UMGtPbWY1d285SW4vZUZTZ3NjQ3pCTURhUngyQjNxMzZBb1MKSWw3WFdBWnBldmFSN1c3eWVBUkthQXNoQkxoeWdVcUxEMHpXYktsU045SHByZDF3ZHBNMGZmeVBwTjVkeE9ZQQplcjA0eTEyR1JuQ2JNWXFpNGN2enRQNFRpblhxcTJ5SFNZaExiTzlxa0k1Z2JXVnhrUnVJY01Ldml4ZGRsbE5ZClEzb2JKYURESG1vdk0zK2cvRysxWUZndDRxRVMzOFhuSjdCclNzaEhubjVFSVFoMjg2eGZKcml5cksyaEhiTEoKcXowWXVGNkczRFhQZVdHZ1h2ajBIaXBjMGY4VURaa0tray9lR0VJNnZFa3l0eXZvZXBvWkkyWGJBZi9aTXk1bgpLd3VoRW40aGhrRk13V2FTV3AvaDBRZE1DYXhrNEJWU09xbU5WYUxTQjcrRmpzSWo0Q2FzRm90WWl5SjJncFJCCk5mOFFhUzRiejBUbjFlQmJDOGtzaitlM1pXZVgyYjV3Vk1qcWw5alR0MlgxSUNzOEtLZTN2RUJranFUMkFVaTIKNTJUdEt6bTczYVdyei9HUHkvUTJMQ29yM0ZoOUZHVlNCT0JCRFhHeTZNSnBOSEpuWVZIOUVFTkZHT2g4NW9sMQoycEFET0JCNXZBVS9rTEI1TEhQajJrdWUvRk1pSGFObnJTWUlHck1sQlNYMmpqOUVZYTF1dVVIK3BkNE1CajFGCjV1SDhPUmlhUTZodDIrV0hrbHhpYzFSajV5VFlRd1ZsSDcwQ0JPbitxVkVkbzYzeVF3ekFNSktGSXdsR1VRRVgKamlsamdjODZxNGNadFVURnJjd01pZGJrKzhRNitKYkRWZzdIVi8rcG5DK3dudjE5N2t3ZQotLS0tLUVORCBDRVJUSUZJQ0FURS0tLS0tCg==
   tls.key: LS0tLS1CRUdJTiBSU0EgUFJJVkFURSBLRVktLS0tLQpNSUlKS1FJQkFBS0NBZ0VBM3hsVUpzMmIvYUkyTkxveTRPSVErZG4veU1iL085OWlLRFJ5WktwSDhyU09tUytvCkY5dW5tU0F6TDY1WEEvdjZuWTBPTEkvZEFTRGprcWtCcElkVEd6b2dSNWY4VWlCNm9zdUVZN1Y3MVhaZHpXTHIKUGpuSnE2WkxBYW9LbXdHODBXNStXZDZWOFB5Z094NTJta3IxdzdJV0t6KzFaTEk1aXpicHBvbjdYVkdWUmFBVApSdk5aRGlKNkNlSnBjSjVINzIzbGtmNVJ2SldhdFpMQ1lJWURiUmZUaUtzeVEvU2xSY3Y1QlZmSGcvTEpTSDlRCkxHUmhQTUFSbGRsOXd5WkN3WlpESHhoZUk0YSsyNmFhOE1ZM3U5c3QvbDAvT282VkNUR3BNaUVoaUdGMkxWanAKVVdxLytCUDRTRkV2SmZxL0R1aW5JMTM5Vy81YVpaNy9Id1JQbG1ZVTZwWFRSTHlJZzdqZCsxOWZKd1I3WDM3cQp3MG84dDA2RmhqbXJDemFZQ1Vqb1JlcURtSGFObVpOL2Rkdkc3alpXQnUrak5oMFlhdnN5UXlDSVZtdjZ5cVNjCmpQaUQ5dWl2eHFUd2pKaWRJQlJmdVVyejNhRVJRN2NRZ2YwcWhxakl6Zmx6SGJGS2hJTG9jQldxN3p5Tmw5aHIKdlVHVC9XWmN3MHQvT3RNNzJTUGFwbG1UZ1ZiYlFSeGYyVkh6eXB0R0l2dHlkbFhLOHRoeE9NcFhvNGUrU2w4ZAoxZ2RRY0M0b2lzTjlGMjlvTnM4UDV5RlFQLy94WXV2OEM2MDduQ2oxRHpySWQ1YXZHL05WZktCL2ZiREtFRmdOCjJXaEhJblR6UExFY2pGNGZFcmNVQUV1V1cwYnVYLzZGSENHM2lUdHJxeUQ5MktUVkRmTjFKNTZycmNzQ0F3RUEKQVFLQ0FnRUFrOHE4czRQcnZZYnk3OVVWbFdKTktxY2V5a3dCa3hFMWZqcllPUldRMmhpQWlyeEdWNSs4bERULwprNnVqbTFFV3diNUswSHh4UktrYitQRWExSHFOTkhFNkp4TnBKS0s5ZXhEbFlBUSt4N2RGQnFWci8ybmF6bW80Ck1COE1MWWxtSXp0V1dvU1l3ZThvMm1FZzRxK2J4WXM1SW1kdTdBa2hFN2RKNjNobTIzZ0xNZmVNTGFsUnFvcHUKWEJQd0U1blhQNmFHdVVOSHRHMUs4dFFKRGxaWStMRWJBZU9mUmVOUWhUOU5kUnVrWVNXNTc5dmZLYmxKclN2egp1bGc4OXNWbTNjV0VLNXBCNnJqOXdKYks5NHZvS2Z0VnFiYnVCd1dqZDFhOXBpYktod1ZCZTJMMkZXaHBTWmM1CkYvY29DN25qVGFZVDZ0cjkxeTVWaGhKaElaUUNmL3Z2NFpsNVhoRkhzNVZUWk5iTS9PZnF5RlFMWVhWSk80OEsKRjd0bWF6QUVRUUJRd1ZacUg5QzlOUWR6UEhXbWMzOE9raHRjMXd6YXFuL3JnOSsxc2dBTUQ4aFdDdFFKVWU5NwpiOXltaDVBMFo0UVhLcHlGVDBiK3BYY0QxalJoYTA3VXRrWCsvekxKOUhwQVhjVW16a0crajVDWE5wbnhzSXE1CmZKRmVxM2hCajl3Nm40aCs1ME00VzBGc2U1WW9FVXNjM0IwZno4QmxRQmIrWUpMRkxOSDM0TUg4cDFsMFpEWUoKeWFlMHBzeGxCaWpnNE9QWitXQ0JhK2p0Rlc0TGlXZ0VjeHdnejh3K2hFT0FRcjJhMURjN3c4amQrWTRJSzhVbQpsVFZzNWRicDRtT21QTWxSdi9HTTdrRHVkRnFiTWczWUZ3WGczUWJxdVZxTFp6RXpqVmtDZ2dFQkFQSktaYkNXCllmTGVqa1MvZmtSeVYzVkliNTRtS3dRSG9NV3ViODh0UGdHdVh6anNKeWQ1UVRRNThQcFVqWHJMSG1uOGxTMisKdmlFOEdKeWxLd04xeU1sWnc0MCtrWmhwSFVwQ1d4LzJaS2pBcXZxQTlPT0tvMmZ2NkhkL3dPQW5VNEN0aW9DMQpwcmk3bEtGWVhvUDhEdFFWd0hZdkl6Q1JxRG5oYzRtd0pEcXpUQzl4ZHVJK3N2eHpsNHhIODJmeDBqclBpRlkrCi93T2RYanlmSVBqeWhIQzRqUFRXYmFpcndYUzlkQmpTbDEyOGFJUlQ1ODAveVhFL1NZQXVnZzA1akt0ZzV6UUEKU28xM01UZXpYUkhYZE8wZGkzdEVNSEdSRUVrRnBlVm5uUFF2Q0NlZEswRFYzNmlOd2lXYzhwd2RmTE1WbmVUdApES3daZWRDeCtvLzdldjBDZ2dFQkFPdTQ4REdFSkpKekh4VlI1bVkxSzJBbFp5WXRwVE9XZWhLMXpYNzRKdk0zCll4TjRuZCtaeDVuOXVTUG1tS3pxRjNUVSs0NFJWdGRKSzZlam9GRThkTURUTldhU0xXL1pEbU4xblQwbmp2T24KSVdKbjU5eW5PQ2hXV0taZ1haLzlVcUdSN1B0Nk94U2trZXg5Yy9mWUJzTVgveHVzZFhRaWdlb2dsMGlPWVZGVwpnWElpaUxSTEhwSEpzSy91TnhJaXpqMGhUWVluN3VEN1BSRU53RlJjQ1lmOEoxZVVGYmQ2RHVDVldlUUNLV2dmCk5kMnRTV29pMFZ5bGo0dVVYOEl3MHRqTE5NRDVDUkVKRWs0R1N2NEVEU212VWR2MUxpQktKQ0wybEVjZ29QZUMKb09EMmlDYzVLcWdubVFyYVJpbEZGazhSVlhBOVBXWkdZM0MwYjZUVm1tY0NnZ0VBTlpPMkFPS0FMbENBYlR0YgpGSStrUDA4UlA0dDVINThBTWpac2l3ZWFHbzBRaVduUERxK0ZkNk1JWXBLbjVtdGNBbHZVTVJWb3ZiaW9TSnROCmM2cHNCL3BOZjhKQ044Mm1xSEViN1dseXdNNDZBTUxiWkNXWUZMZThWQkJ2K2lFNEdkQkdQRWZ1NGhLNHZ5VG4KWVpBdlJ6NjRIR280QWRsenRiamc3NlYvbld0Z2dXMDV1TFhjcG01NUtKQVFodisyV1VMakJ3OVBIT0dEb1N3ZgpBbTIrVTU2N3JMaHQ3MHByc1FEajEwbGFKMlF1U0hTMVlYR2xmZUZjdzNlRlVwOVROK0pwdmRvQ29sMmxDSWdsCklIamdaajZPUldmQ3Zwb3hXN1JnQnVadWtxQ0QwUjYwSGRZdGF2eE4zanRpZXBzYXBBODNweE8wSmFwTWdaV1oKcnBVUmtRS0NBUUJPY0V2OUxpdTlUL0dYOXBqa2llelZJWjBoWnk4QjY2RFRlUXZZcEZyUnRDeVQzaDhxdU5GaQp2THRPNXYwSERSNmhFZjVqV0FHOXdldDA3VTM3dWxKZmwraTlLUWRWb0xUWkE5bys3MXJ5V1RzU3MrREQzQ0VqCnl4ZlV4VnhpVUxtZWFpQ2h6aHE2MDhoN0dZUHRoVVU2eGxGdHRBV2hqNW9MZnF6WXlBZzZPTDc2YStOeG0wMmcKMWF5bDNtOFU2ZUFYRjIza3BvVW0rSE5wcVZuR3VKbXpWb1VBNzVZS1orTnJlRWRoU0JiZlB3TjlzSnd0WlVpbAp1N0g0a0hjTTk1SXg4ZXlzQ2pLcUtJcWV6QmxJVGJEVG5qTnZMamNiSjVDKzBhNmx2SVhUMXZRUjUvZUdsYzlNCkJXRTM2MHBOa1YvTEQ4bU9mOUplcGkyUTQzb0RMOUVoQW9JQkFRRFRXSW1meTBLOWdHekEyclB5MTY5bVdZUUsKT2xjbkQzK2hRcTZ4NTFabjFlL3RleEZlVmxoSG40cnJuUmRDRk9BcDQ3dUZrSjJtNzJHQ1ZENzRFd1F1Y0s5eQpBRDVqb3JxZ1ZIcUNLWmRrSGpiMlY2ME16bTZnM3J0TDlXSlhGVkx2TkJiL1FHQjJ2Z0hWT08wenFpcUdaajRlCkV4N2wybS8vNVNFNERMdG43MEo5Q2dHMUh0WENTOGRXckdQTDFwekRuazhWWHRub1h6YjBMQ2hMVUZFZ1pSbWgKY1Y2QUZIRUsySDh3Qkh2aU55ZWhzUlFpRGtsMkFpV09jSk52a3pXNjhjazJuSmpSV3lQWUsxSkwzTkNLcEIzUQpPb2hyUDBmSGNXQVhNVzk3d0ZYWmhSZm5RZkR4eElPbGozTWNZVDBBbGFuWGQwRjROR2MyTnZtcGh4MDQKLS0tLS1FTkQgUlNBIFBSSVZBVEUgS0VZLS0tLS0K
   HARBOR_ADMIN_PASSWORD: "SGFyYm9yMTIzNDU="
@@ -60,7 +77,7 @@ metadata:
     app: "harbor"
 type: Opaque
 data:
-  secret: "NTJEcWRrSkZoWlVVdUZ3QQ=="
+  secret: "VU96Qkc1VjdHTHNLdEV4cw=="
 
 ---
 # Source: harbor/templates/registry/registry-secret.yaml
@@ -75,7 +92,7 @@ metadata:
     app: "harbor"
 type: Opaque
 data:
-  REGISTRY_HTTP_SECRET: "MDNiTWljMFByRktiQU5nRw=="
+  REGISTRY_HTTP_SECRET: "bHFjT01ueWliNTY2U2NQUA=="
   REGISTRY_REDIS_PASSWORD: ""
 
 ---
@@ -103,7 +120,7 @@ data:
   DISABLE_API: "false"
   DISABLE_STATEFILES: "false"
   ALLOW_OVERWRITE: "true"
-  #CHART_URL: https://localhost:30003/chartrepo
+  #CHART_URL: http://localhost:30003/chartrepo
   AUTH_ANONYMOUS_GET: "false"
   TLS_CERT:
   TLS_KEY:
@@ -181,7 +198,7 @@ data:
   POSTGRESQL_USERNAME: "postgres"
   POSTGRESQL_DATABASE: "registry"
   POSTGRESQL_SSLMODE: "disable"
-  EXT_ENDPOINT: "https://localhost:30003"
+  EXT_ENDPOINT: "http://localhost:30003"
   CORE_URL: "http://harbor-harbor-core"
   JOBSERVICE_URL: "http://harbor-harbor-jobservice"
   REGISTRY_URL: "http://harbor-harbor-registry:5000"
@@ -243,7 +260,7 @@ data:
       - name: "STD_OUTPUT"
         level: DEBUG
 ---
-# Source: harbor/templates/nginx/configmap-http.yaml
+# Source: harbor/templates/nginx/configmap-https.yaml
 
 apiVersion: v1
 kind: ConfigMap
@@ -277,8 +294,11 @@ data:
       upstream portal {
         server harbor-harbor-portal;
       }
-
-      log_format timed_combined '$remote_addr - '
+      upstream notary-server {
+        server harbor-harbor-notary-server:4443;
+      }
+      
+      log_format timed_combined 'remote_addr - '
         '"$request" $status $body_bytes_sent '
         '"$http_referer" "$http_user_agent" '
         '$request_time $upstream_response_time $pipe';
@@ -286,20 +306,37 @@ data:
       access_log /dev/stdout timed_combined;
 
       server {
-        listen 80;
+        listen 443 ssl;
+    #    server_name harbordomain.com;
         server_tokens off;
+        # SSL
+        ssl_certificate /etc/nginx/cert/tls.crt;
+        ssl_certificate_key /etc/nginx/cert/tls.key;
+      
+        # Recommendations from https://raymii.org/s/tutorials/Strong_SSL_Security_On_nginx.html
+        ssl_protocols TLSv1.1 TLSv1.2;
+        ssl_ciphers '!aNULL:kECDH+AESGCM:ECDH+AESGCM:RSA+AESGCM:kECDH+AES:ECDH+AES:RSA+AES:';
+        ssl_prefer_server_ciphers on;
+        ssl_session_cache shared:SSL:10m;
+      
         # disable any limits to avoid HTTP 413 for large image uploads
         client_max_body_size 0;
+      
+        # required to avoid HTTP 411: see Issue #1486 (https://github.com/docker/docker/issues/1486)
+        chunked_transfer_encoding on;
 
         location / {
           proxy_pass http://portal/;
-          proxy_set_header Host $host;
+          proxy_set_header Host $http_host;
           proxy_set_header X-Real-IP $remote_addr;
           proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
           
           # When setting up Harbor behind other proxy, such as an Nginx instance, remove the below line if the proxy already has similar settings.
           proxy_set_header X-Forwarded-Proto $scheme;
-          
+
+          # Add Secure flag when serving HTTPS
+          proxy_cookie_path / "/; secure";
+
           proxy_buffering off;
           proxy_request_buffering off;
         }
@@ -361,13 +398,13 @@ data:
 
         location /service/ {
           proxy_pass http://core/service/;
-          proxy_set_header Host $host;
+          proxy_set_header Host $http_host;
           proxy_set_header X-Real-IP $remote_addr;
           proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
           
           # When setting up Harbor behind other proxy, such as an Nginx instance, remove the below line if the proxy already has similar settings.
           proxy_set_header X-Forwarded-Proto $scheme;
-          
+
           proxy_buffering off;
           proxy_request_buffering off;
         }
@@ -375,9 +412,27 @@ data:
       location /service/notifications {
           return 404;
         }
+      location /notary/ {
+          proxy_pass http://notary-server;
+          proxy_set_header Host $http_host;
+          proxy_set_header X-Real-IP $remote_addr;
+          proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+
+          # When setting up Harbor behind other proxy, such as an Nginx instance, remove the below line if the proxy already has similar settings.
+          proxy_set_header X-Forwarded-Proto $scheme;
+
+          proxy_buffering off;
+          proxy_request_buffering off;
+
+          rewrite /notary/(.*) /$1 break;
+        }
       }
+        server {
+          listen 80;
+          #server_name harbordomain.com;
+          return 301 https://$host$request_uri;
+      } 
     }
-    
 ---
 # Source: harbor/templates/notary/notary-cm.yaml
 
@@ -397,70 +452,70 @@ data:
   notary-signer-ca.crt: |
     -----BEGIN CERTIFICATE-----
     MIIC8zCCAdugAwIBAgIBATANBgkqhkiG9w0BAQsFADAbMRkwFwYDVQQDExBoYXJi
-    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
+    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
-    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
+    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
-    AQH/MA0GCSqGSIb3DQEBCwUAA4IBAQBkjBBKoKUdAw1Z51BibTtAzWS8O9gl7wzv
-    wzzIMPPl2N34egrnVMAME4sI3qs8+T9i/Enet6s9QfV7pqs7Lh6bs9UTSJci+Boe
-    BN+WDSB3kMGP73rmU3eG1kcyWd7L/J70QMgDlkRZlkZroQrcqWZTrI6DqFfKkMxv
-    ojDgr/6vxHjFxiC9pMu9+femPvcT3UDbLQuOkLZo9ZaK4U54YhdA29qZgjvLxyAY
-    HR31V9SoNEPu47Dp0AdplulusHuxEcjNOB8dKMYfRpygiWe+CmnyQOEvW2zP1nWV
-    hvMwig9xO6nErnnhkh8mDWDpiU9Vxl8bL04rv8SOHGep8XonRa0w
+    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
     -----END CERTIFICATE-----
     
   notary-signer.crt: |
     -----BEGIN CERTIFICATE-----
     MIIC+zCCAeOgAwIBAgIBATANBgkqhkiG9w0BAQsFADAbMRkwFwYDVQQDExBoYXJi
-    b3Itbm90YXJ5LWNhMB4XDTE5MDUwOTEyNDIzOFoXDTIwMDUwODEyNDIzOFowJjEk
+    b3Itbm90YXJ5LWNhMB4XDTE5MDUwOTEyNTAzOVoXDTIwMDUwODEyNTAzOVowJjEk
     MCIGA1UEAxMbaGFyYm9yLWhhcmJvci1ub3Rhcnktc2lnbmVyMIIBIjANBgkqhkiG
-    9w0BAQEFAAOCAQ8AMIIBCgKCAQEAqM9zkmH8DmaTLK1yz860MTl0A8H6SVE0eWAS
-    8ix+JA/ZaM4qg+x+1FTQ09TewKDESt3VtJMQiLGW1aMxikviXiTKv/mGo+xncTME
-    Py8yVWIUUkNBQWt14+mXdBEQNe0B9KxvOuUorJMgsXn+BVzV+iAEYo0WJIVJfvwr
-    //yaKZ+Wpe0EyGuV+kzI3drmh366GWPRYRfuWivEwK4jbPOkM/NsXeRF1wy2q6Ir
-    5zHO4EUo/GI53wCjaoElHcc3OAbyVZ6p2gubzctZDW1vXEzD5Cqf6LnuY0/VpTJG
-    eXmie2YSh+n2keq/jyJaZos0vEyjnEokMYv0T9PVpYCnf1suMQIDAQABoz8wPTAO
+    9w0BAQEFAAOCAQ8AMIIBCgKCAQEAug1LVCz58y7qmCNX9TMHo7x2NbA1PUqSP1Eq
+    eWfHRLqEaiJ0DeQXeGFE+CcIEkQwwxWEHF0IE133jn2AvvBfRW6rLKKwQLCgRAJ4
+    aU4WtWLotujzIIl/1nxrgll0gmbns26+0Rblw2WhaCY+K1fJeifqZ2yipXZH7oB1
+    XbZQ36orK6RqQ+oF+2KVzmssp8gUDOEJV3mt1F2tOn7ABoMBBjAdReuTebXK8hOP
+    dFwFlxCkf9meglrFZodGuTzLQz52aufK4+iiFMOZq6wzcNOp6HNWitUCE5xjE3zo
+    Kzwoy/CfXD2i9nBxzxhyeAlJFT7aWa8GvUxMdqlWywiEoSlyKQIDAQABoz8wPTAO
     BgNVHQ8BAf8EBAMCBaAwHQYDVR0lBBYwFAYIKwYBBQUHAwEGCCsGAQUFBwMCMAwG
-    A1UdEwEB/wQCMAAwDQYJKoZIhvcNAQELBQADggEBAHc845Xbgmf6nqBLa26UN9BY
-    pxxEVoG2RHSHC+TlRZwYstRYds/lItrzAKAH4AEtY/MgJcX90BRLLb8MmH0E1zDw
-    m7z8VxZ5GZHjEe02aK2+9redX7KkUJ0qwmd1iY325f8fMSKmjpwpHK6xDIL4j3oy
-    xsfYQgUh/SqfTVzBkTkB5iGTUwMLNcFc9rClAPqsfQD+X7VGydu9ZeLzh8/qN6NP
-    G//BzOFbd9YQjbY+HH2lOIxTsMlBqdhuvSkVDrWDsb+B0POqp0ZOCJCn3SDDYPGN
-    ehlS+aG3g6vRirSwuA7LEcpIZzOYFPt9T7D2S4FsnQs5ADn8KV9OmE8Z2P8F0FQ=
+    A1UdEwEB/wQCMAAwDQYJKoZIhvcNAQELBQADggEBAFwFZR9KHM6CVv7elHFHdbXS
+    eRRNgUY5YNiyUgpT250AySeZINYWGePu+WJdWUNNBLt9kwjcNUCjHKWVcbaVLaI0
+    og+OR5B4MpL8fSE6yIRqid1k5SpRh4w4IaQyiRo3XtL7ddN5dnWn0cc4E3Crc35e
+    XIcavWcmbSkOQsQYJbNP4qesKlcWXoeQMjX3HoIi8brjcKU1wQmu10wem7ocfw0A
+    ZoekDdH8nH8PyS8NRBufb0Vv8ctmD7IXXP+ScBG4hcoXmYWJr9cUwXh5fHLqdJTi
+    xUZLMWbNfJnN4P0/TWLhR/dnFuk/5jGoFcRx6TMp6i/KmFC6EYsHuMdTvhS/03M=
     -----END CERTIFICATE-----
     
   notary-signer.key: |
     -----BEGIN RSA PRIVATE KEY-----
-    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
+    MIIEpQIBAAKCAQEAug1LVCz58y7qmCNX9TMHo7x2NbA1PUqSP1EqeWfHRLqEaiJ0
+    DeQXeGFE+CcIEkQwwxWEHF0IE133jn2AvvBfRW6rLKKwQLCgRAJ4aU4WtWLotujz
+    IIl/1nxrgll0gmbns26+0Rblw2WhaCY+K1fJeifqZ2yipXZH7oB1XbZQ36orK6Rq
+    Q+oF+2KVzmssp8gUDOEJV3mt1F2tOn7ABoMBBjAdReuTebXK8hOPdFwFlxCkf9me
+    glrFZodGuTzLQz52aufK4+iiFMOZq6wzcNOp6HNWitUCE5xjE3zoKzwoy/CfXD2i
+    9nBxzxhyeAlJFT7aWa8GvUxMdqlWywiEoSlyKQIDAQABAoIBAQCyxHFb+TdVlf/t
+    nRA31weBKWW/4obVVKC/XALe0nuiq0DuJhqy+jYfAf9eHUrhGkpsOHFPO4i16zUh
+    4a9iR96S/WpWIiAOmGf10RXXwSOKt/X5Qk3SNqvx8Gzwu3l6jtwVCdUpXMH6hN2Z
+    EB3uUZSS3mWZaMXDDKrDHQUovTRqIxmXB+LMo8oD7j8iLL+kqE2A+qzWKfo71ssw
+    K1PYl0/06TqzpNQkR6zLcOUE4Z/NB2kmHeBl7RSMVHP2JqwOUPb08KXfRCY8f6aE
+    y0z0+kOtkt4k4XJg//TTLnPYyCFH69zvkhPC325ykhSJ1kssj4iIlAgU+uaK/0qq
+    dMtAM/MtAoGBAN0LEJRShBTxasTKB44qqKPk5JTgcHYsEZo4hDUBgk7eKFYxYBGU
+    /4nWTeHzivU1wrwgwtfuAhSzor2TRUwb73vmtA6wJZx6n22IeiWxe51x75LjATCJ
+    84cBiwNlyy6TFDp+en9xtKCVPLUDsY4f579/V7KEFoTJX2tclJXzbOfTAoGBANd5
+    m2TXqHK/405zxLRsfuVw1z7TxZJ8i60/bboXvDqZ67hYBQrUpoJFj7Irz7UbII3E
+    w3uBVbmCxmsYPVKRmfaNliiLYvWZJEUY1WnINag4SbyGpL2UPH+DbrVT18xgdgZQ
+    +5S16mexd6NfFel6mZj8AheHDcEdpumCctHSndyTAoGAMxTAgxZCkbhsjQeHEXKI
+    QD/AFyt6scRjWPlgjANKQsGSHsEQS1/cYdUVcHbgkOQYmXMUs+O7tV8B579lzz3R
+    bReWWqKYPn4T47MbTyShxXO0AoTVHIt0rKlNn75hYuT4UsAxvMvhCw8R1V8CJC75
+    VkauVIGz1oHWvC/L4o87hqMCgYEA1LrMfcykE1X61fNZmj8bMO4ss2xkPHEVfR+H
+    9xeDz98yZzcPE1hKY4bFjUPPtp9njk9aJ07TEWlY91ZhBGmXNWEnhDPIqWxd8JHJ
+    8LumrcOUmLndXwVAjSt3WzHBdZcuLqI5HuJS37jHwtUXTwCpL+5tKkk9fREHPrZ5
+    IUnsbF0CgYEA0xabFxRazQV5sJtrdyvNvgUByRbXk39DqkxEHssM6eFJQB5lGbhX
+    a4xFvPdyVuSSNug9dwVTo50bbH0Rr5YTu0PXH+1dtyMKkfcSJfi3LqcCNVkaFmip
+    hYINHOczNUgFJ7R5F3ZSAdr0CYvVHkN8b0JOWtBcBClG3VyR62ZvEJo=
     -----END RSA PRIVATE KEY-----
     
   server-config.postgres.json: |
@@ -485,7 +540,7 @@ data:
       "auth": {
           "type": "token",
           "options": {
-              "realm": "https://localhost:30003/service/token",
+              "realm": "http://localhost:30003/service/token",
               "service": "harbor-notary",
               "issuer": "harbor-token-issuer",
               "rootcertbundle": "/root.crt"
@@ -552,7 +607,7 @@ data:
     auth:
       token:
         issuer: harbor-token-issuer
-        realm: "https://localhost:30003/service/token"
+        realm: "http://localhost:30003/service/token"
         rootcertbundle: /etc/registry/root.crt
         service: harbor-registry
     validation:
@@ -755,6 +810,10 @@ spec:
       port: 80
       targetPort: 80
       nodePort: 30002
+    - name: https
+      port: 443
+      targetPort: 443
+      nodePort: 30003
   selector:
     release: harbor
     app: "harbor"
@@ -885,9 +944,9 @@ spec:
         app: "harbor"
         component: chartmuseum
       annotations:
-        checksum/configmap: d634f6d7b1a65f8d76131cbda6ea3bf92f47bff35de37c2af7a221c6025bd81a
+        checksum/configmap: 7bf295fc9beccb84ff04b030d52dc1f34938d1f6830addd18ebc862d225b1c4f
         checksum/secret: 4e65b2fa8b4ab04c4627cf1b1132453622716fd8e5bcb808adc8a2eadaabfd1a
-        checksum/secret-core: 745f4d0560b5585c057d21e344e90afcf21fc0a89c5c5461e1ca6d74312add2e
+        checksum/secret-core: 79134f69e41ebb52c7857d80cfe22a528fc0a709caf991ae75cf58874a602c8e
     spec:
       containers:
       - name: chartmuseum
@@ -1019,9 +1078,9 @@ spec:
         app: "harbor"
         component: core
       annotations:
-        checksum/configmap: b2634326ebaf81a9d16d8f8471be6db14f32364ab16a93253bca88fcbf8a5ccb
-        checksum/secret: 4609a1fc5746528d996a2404371b7c8c29a50b456bf50fdff9188eece33b8038
-        checksum/secret-jobservice: 8c132b0d95b5ae8e7a931b6fc6b639b97910f4e1284a8283d0cc4b1d496be206
+        checksum/configmap: 3fc9138e8f161b288b9121ad3b50b7785a1b49eef3c1f4612b18d26036d72e02
+        checksum/secret: c0a05c611117ec7b562d2ec34526b6c8d140d43977943a178372498e2407cbe9
+        checksum/secret-jobservice: 1f6dab68fb210f6df8a6b2875dcd238d45065d7521342b4d9bed744ab3f1e516
     spec:
       containers:
       - name: core
@@ -1067,6 +1126,9 @@ spec:
         - name: token-service-private-key
           mountPath: /etc/core/private_key.pem
           subPath: tls.key
+        - name: ca-download
+          mountPath: /etc/core/ca/ca.crt
+          subPath: ca.crt
         - name: psc
           mountPath: /etc/core/token
       volumes:
@@ -1082,6 +1144,12 @@ spec:
       - name: token-service-private-key
         secret:
           secretName: harbor-harbor-core
+      - name: ca-download
+        secret:
+          secretName: "harbor-harbor-certificate"
+          items:
+            - key: ca.crt
+              path: ca.crt
       - name: psc
         emptyDir: {}
 ---
@@ -1113,8 +1181,8 @@ spec:
         component: jobservice
       annotations:
         checksum/configmap: 284bfc91e390437cc5029ed1494432212b26ddb8b6f28e369429a55f92f349e8
-        checksum/secret: ca619da51b8b6faac7d1a30d5cc2ae9577c286e282a1b00f130275f09ff27673
-        checksum/secret-core: 75c1656b357abbb6806804bf69ab710078e03513046054f27c3b9de6c5792b4c
+        checksum/secret: c2f0002a1571367f6272885e516e3b9ae7e5ed650b12f629dd4cf184c6202faf
+        checksum/secret-core: 36807aa69cdbefef5f291e92d98e7008ff4d1f5937ca0e1244ad5b3442f3b834
     spec:
       containers:
       - name: jobservice
@@ -1195,7 +1263,8 @@ spec:
         app: "harbor"
         component: nginx
       annotations:
-        checksum/configmap: 1cb04f1392a4ee09bc14bdba2f246843dafc1a87ac2fe70e8ab67ce54139092c
+        checksum/configmap: d81fb5417a26de0df044399a046d506300894b27000c96894db9d1aa1257eb36
+        checksum/secret: a518a308bead1dde7b653911bad730f15958931d1bccaad93ee939c16bf1a28f
     spec:
       containers:
       - name: nginx
@@ -1220,10 +1289,15 @@ spec:
         - name: config
           mountPath: /etc/nginx/nginx.conf
           subPath: nginx.conf
+        - name: certificate
+          mountPath: /etc/nginx/cert
       volumes:
       - name: config
         configMap:
           name: harbor-harbor-nginx
+      - name: certificate
+        secret:
+          secretName: harbor-harbor-certificate
 ---
 # Source: harbor/templates/notary/notary-server.yaml
 
@@ -1253,8 +1327,8 @@ spec:
         app: "harbor"
         component: notary-server
       annotations:
-        checksum/configmap: 91463a76d04ca9cde4275763154210b7770576366e3d37dbf4afd1d578188ba3
-        checksum/secret-core: db0faf5b4c6e812af5b6b3eea774834fa901dbe3bbbef23a5feda5c93a45da4c
+        checksum/configmap: 6eac0c171a8ab224ff37f4d122d87b3194c42edf39a49d2018fbc1f858674448
+        checksum/secret-core: cd097c6cb5d63bea24836c00f95e321ed5d5261f068caea51fc027e60646972a
     spec:
       containers:
       - name: notary-server
@@ -1309,7 +1383,7 @@ spec:
         app: "harbor"
         component: notary-signer
       annotations:
-        checksum/configmap: e45260ea6ac5a3aa8f72b601fd3ac66a031340ce7324419330f1c2fc121583cc
+        checksum/configmap: c2af990351ff5a9faa8bbdd734f2daa51201b3853d6449f41996598ea4f1f484
     spec:
       containers:
       - name: notary-signer
@@ -1405,10 +1479,10 @@ spec:
         app: "harbor"
         component: registry
       annotations:
-        checksum/configmap: 60b5406777628ab531192bd79d062bd8880d83772644089ed5349cd65d8aa24c
-        checksum/secret: a11f3a26cc6e0863351e29ca168d9716654a33f3f981ddba34a3042d5779c8f2
-        checksum/secret-jobservice: cff45c8ded636959c9c4145634f93b892e650dc286f53d70f6b519ad9d787163
-        checksum/secret-core: a3bc447f04d26272e25a08a9e9598e795b9e7eca310c7a9cbd3abc6d14a09b02
+        checksum/configmap: 964165b82470da958a9e8dd35a17886d40d085b1a65367a916cb7f7a9148e6cf
+        checksum/secret: e155fb0db5959827ba5de5d0d48a7052c61c349ed479c6f76d9f49b7ea31207e
+        checksum/secret-jobservice: 9f8653d35eeaf3f726556345597052a7b381b8fdb4bb2aa54c6dbaf75ac5eb0f
+        checksum/secret-core: 8555b03f5293af56508f3197c2c037206330d6eb7845ef2fbc488680005b92c4
     spec:
       containers:
       - name: registry
@@ -1632,14 +1706,12 @@ spec:
         requests:
           storage: "1Gi"
 ---
-# Source: harbor/templates/common/certificate-secret.yaml
-
----
 # Source: harbor/templates/ingress/ingress.yaml
 
 ---
 # Source: harbor/templates/ingress/notary-ingress.yaml
  
 ---
-# Source: harbor/templates/nginx/configmap-https.yaml
+# Source: harbor/templates/nginx/configmap-http.yaml
 
+    
