@@ -6,11 +6,11 @@
   "details": {
     "steps": [
       {
-        "title": "Setup",
+        "title": "Getting started",
         "text": "setup.md"
       },
       {
-        "title": "Installing Harbor",
+        "title": "Harbor",
         "text": "01-Installing-Harbor.md"
       },
       {

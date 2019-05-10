@@ -1,6 +1,4 @@
-# kubesec plugin and admission controller
-
-## Admission Control
+Kubesec identifies security risks in your Kubernetes configuration and quantifies them with risk scores.
 
 1. Clone <https://github.com/stefanprodan/kubesec-webhook>
 
