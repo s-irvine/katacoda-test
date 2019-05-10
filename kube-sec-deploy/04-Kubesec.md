@@ -32,8 +32,7 @@ Kubesec identifies security risks in your Kubernetes configuration and quantifie
 
     ```bash
     $ kubectl apply -f ./test/deployment.yaml
-    Error from server (InternalError): error when creating "./test/deployment.yaml": Internal error occurred: admission webhook "deployment.admi
-    ssion.kubesc.io" denied the request: deployment-test score is -30, deployment minimum accepted score is 0
+    Error from server (InternalError): error when creating "./test/deployment.yaml": Internal error occurred: admission webhook "deployment.admission.kubesc.io" denied the request: deployment-test score is -30, deployment minimum accepted score is 0
     ```
 
 6. The deployment is insecure. Let's check why. Create a Bash function to POST YAML to <https://kubesec.io.>
