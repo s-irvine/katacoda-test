@@ -1,7 +1,9 @@
-Please wait while Katacoda provisions our instances. This should only take 1-2 minutes. Once `kubectl get pods`{{execute}} returns:
+# Getting started
+
+Please wait while we set up your cluster. This should only take 1-2 minutes. Once `kubectl get pods`{{execute}} returns:
 
 ```
 No resources found
 ```
 
-Feel free to continue
+Click _Continue_ to start the workshop.
