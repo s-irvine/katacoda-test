@@ -30,7 +30,7 @@ add-apt-repository \
     "deb [arch=amd64] https://download.docker.com/linux/ubuntu \
     $(lsb_release -cs) \
     stable" &&
-apt-get update &&
+apt-get update #&&
 # mv /etc/docker/daemon.json /etc/docker/daemon-old.json &&
 # mv /lib/systemd/system/docker.service . &&
 # mv daemon.json /etc/docker/daemon.json &&
