@@ -17,6 +17,7 @@ docker pull goharbor/redis-photon:dev
 
 # Update docker (so we have a version with `docker trust` commands)
 systemctl stop kubelet
+systemctl stop docker
 cp /lib/systemd/system/docker.service .
 apt-get remove -y docker docker-engine docker.io containerd runc &&
 rm /etc/systemd/system/docker.service /etc/systemd/system/docker.socket &&
