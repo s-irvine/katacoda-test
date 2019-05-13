@@ -1,6 +1,6 @@
 #! /bin/bash
 
-# Preload docker images used in the workshop (also buy time for Kube to come up)
+# Preload docker images used in the workshop (run this first so Katacoda has time to provision Kube)
 docker pull docker.io/ibmcom/portieris:0.5.1
 docker pull goharbor/harbor-adminserver:dev
 docker pull goharbor/clair-photon:dev
