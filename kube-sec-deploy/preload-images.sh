@@ -19,6 +19,8 @@ docker pull goharbor/redis-photon:dev
 systemctl stop kubelet
 cp /lib/systemd/system/docker.service .
 apt-get remove -y docker docker-engine docker.io containerd runc &&
+rm /etc/systemd/system/docker.service /etc/systemd/system/docker.socket &&
+systemctl daemon-reload &&
 apt-get update &&
 apt-get install -y \
         apt-transport-https \
@@ -32,16 +34,15 @@ add-apt-repository \
     $(lsb_release -cs) \
     stable" &&
 apt-get update #&&
-# mv /etc/docker/daemon.json /etc/docker/daemon-old.json &&
-# mv /lib/systemd/system/docker.service . &&
-# mv daemon.json /etc/docker/daemon.json &&
-# apt-get install -y docker-ce docker-ce-cli containerd.io  || true &&
-# mv /etc/docker/daemon-old.json /etc/docker/daemon.json &&
-# # Remove '-H fd://' from the command invocation of the docker service as it conflicts with the `daemon.json`
-# sed 's/\ \-H\ fd\:\/\///g' /lib/systemd/system/docker.service > /lib/systemd/system/docker.service &&
-# cat /etc/docker/daemon.json | jq '.["insecure-registries"] += ["127.0.0.1/8"]' > /etc/docker/daemon.json &&
-# systemctl daemon-reload &&
-# systemctl start docker &&
-# systemctl start kubelet
+mv /etc/docker/daemon.json /etc/docker/daemon-old.json &&
+mv daemon.json /etc/docker/daemon.json &&
+apt-get install -y docker-ce docker-ce-cli containerd.io  || true &&
+mv /etc/docker/daemon-old.json /etc/docker/daemon.json &&
+# Remove '-H fd://' from the command invocation of the docker service as it conflicts with the `daemon.json`
+sed 's/\ \-H\ fd\:\/\///g' /lib/systemd/system/docker.service > /lib/systemd/system/docker.service &&
+cat /etc/docker/daemon.json | jq '.["insecure-registries"] += ["127.0.0.1/8"]' > /etc/docker/daemon.json &&
+systemctl daemon-reload &&
+systemctl start docker &&
+systemctl start kubelet
 
 # Pull down a Clair DB and push it into the container so we don't need to wait for it to update
