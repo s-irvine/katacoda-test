@@ -1,8 +1,5 @@
 #! /bin/bash
 
-# Make Clair database deploy script executable (Katacoda doesn't preserve file permissions)
-chmod a+x deploy_db.sh
-
 # Preload docker images used in the workshop (run this first so Katacoda has time to provision Kube)
 docker pull docker.io/ibmcom/portieris:0.5.1
 docker pull goharbor/harbor-adminserver:v1.7.0
@@ -17,6 +14,9 @@ docker pull goharbor/registry-photon:v2.6.2-v1.7.0
 docker pull goharbor/harbor-registryctl:v1.7.0
 docker pull goharbor/harbor-db:v1.7.0
 docker pull goharbor/redis-photon:v1.7.0
+
+# Make Clair database deploy script executable (Katacoda doesn't preserve file permissions)
+chmod a+x deploy_db.sh
 
 # Update docker (so we have a version with `docker trust` commands)
 systemctl stop kubelet
