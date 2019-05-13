@@ -32,7 +32,7 @@ add-apt-repository \
     stable" &&
 apt-get update &&
 mv /etc/docker/daemon.json /etc/docker/daemon-old.json &&
-apt-get install -y docker-ce docker-ce-cli containerd.io < /dev/null || true &&
+apt-get install -y docker-ce docker-ce-cli containerd.io &&
 mv /etc/docker/daemon-old.json /etc/docker/daemon.json &&
 # Remove '-H fd://' from the command invocation of the docker service as it conflicts with the `daemon.json`
 sed 's/\ \-H\ fd\:\/\///g' /lib/systemd/system/docker.service > /lib/systemd/system/docker.service &&
