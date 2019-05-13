@@ -25,7 +25,7 @@ apt-get install -y \
         curl \
         gnupg-agent \
         software-properties-common &&
-curl -fsSL https://download.docker.com/linux/ubuntu/gpg | apt-key add -
+curl -fsSL https://download.docker.com/linux/ubuntu/gpg | apt-key add - &&
 add-apt-repository \
     "deb [arch=amd64] https://download.docker.com/linux/ubuntu \
     $(lsb_release -cs) \
@@ -33,8 +33,8 @@ add-apt-repository \
 apt-get update &&
 apt-get install -y docker-ce docker-ce-cli containerd.io &&
 # Remove '-H fd://' from the command invocation of the docker service as it conflicts with the `daemon.json`
-sed 's/\ \-H\ fd\:\/\///g' /lib/systemd/system/docker.service > /lib/systemd/system/docker.service
-systemctl start docker
+sed 's/\ \-H\ fd\:\/\///g' /lib/systemd/system/docker.service > /lib/systemd/system/docker.service &&
+systemctl start docker &&
 systemctl start kubelet
 
 # Pull down a Clair DB and push it into the container so we don't need to wait for it to update
