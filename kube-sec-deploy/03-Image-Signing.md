@@ -98,23 +98,16 @@ Portieris is a Kubernetes admission controller, open sourced by IBM. When you cr
 
 1. Install Portieris.
 
-    1. Add Harbor's CA to the Portieris deployment
-
-        ```bash
-        sed -i '' "s/ca.pem: <sed-me>/ca.pem: $(cat harbor-ca.crt | base64)/" setup/portieris.yaml
-        ```
-
     2. Deploy Portieris.
 
         ```bash
-        kubectl create ns ibm-system
-        kubectl apply -f setup/portieris.yaml
+        kubectl apply -f portieris.yaml
         ```
 
     3. Wait for Portieris to start. This might take a couple of minutes.
 
         ```bash
-        kubectl get pods -n ibm-system --watch
+        kubectl get pods --watch
         ```
 
         Wait for there to be at least one `portieris` pod running:
@@ -127,7 +120,7 @@ Portieris is a Kubernetes admission controller, open sourced by IBM. When you cr
     4. Set up the Mutating Admission Webhook for Portieris. This tells Kubernetes to ask Portieris if a given resource is OK to deploy.
 
         ```bash
-        kubectl apply -f setup/webhook.yaml
+        kubectl apply -f webhook.yaml
         ```
 
     Portieris installs two custom Kubernetes resources for managing it: ImagePolicies and ClusterImagePolicies. If an ImagePolicy exists in the same Kubernetes namespace as your resources, Portieris uses that to decide what rules to enforce on your resources. Otherwise, Portieris uses the ClusterImagePolicy.
@@ -155,7 +148,7 @@ Portieris is a Kubernetes admission controller, open sourced by IBM. When you cr
     3. Try to deploy an unsigned image to the cluster. We've created a deployment definition for you.
 
         ```bash
-        kubectl apply -f setup/demo-api.yaml
+        kubectl apply -f demo-api.yaml
         ```
 
         Portieris doesn't do anything with the deployment, so it's allowed to be deployed.
@@ -177,7 +170,7 @@ Portieris is a Kubernetes admission controller, open sourced by IBM. When you cr
 
         ```bash
         kubectl delete deployment demo-api
-        kubectl apply -f setup/demo-api.yaml
+        kubectl apply -f demo-api.yaml
         ```
 
         The deployment is rejected because it isn't signed.
@@ -198,8 +191,8 @@ Portieris is a Kubernetes admission controller, open sourced by IBM. When you cr
     7. Try to deploy your signed image. Change the image in demo-api.yaml to our signed image: `$MINIKUBE_IP:30003/library/signed-demo-api`
 
         ```bash
-        vi setup/demo-api.yaml
-        kubectl apply -f setup/demo-api.yaml
+        vi demo-api.yaml
+        kubectl apply -f demo-api.yaml
         ```
 
         This deployment is allowed.
