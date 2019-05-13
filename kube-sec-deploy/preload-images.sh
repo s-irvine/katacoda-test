@@ -1,5 +1,8 @@
 #! /bin/bash
 
+# Make Clair database deploy script executable (Katacoda doesn't preserve file permissions)
+chmod a+x deploy_db.sh
+
 # Preload docker images used in the workshop (run this first so Katacoda has time to provision Kube)
 docker pull docker.io/ibmcom/portieris:0.5.1
 docker pull goharbor/harbor-adminserver:dev
