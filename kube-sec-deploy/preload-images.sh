@@ -31,9 +31,7 @@ add-apt-repository \
     $(lsb_release -cs) \
     stable" &&
 apt-get update &&
-set +e;
-apt-get install -y docker-ce docker-ce-cli containerd.io;
-set -e;
+$(apt-get install -y docker-ce docker-ce-cli containerd.io) || true &&
 # Remove '-H fd://' from the command invocation of the docker service as it conflicts with the `daemon.json`
 sed 's/\ \-H\ fd\:\/\///g' /lib/systemd/system/docker.service > /lib/systemd/system/docker.service &&
 cat /etc/docker/daemon.json | jq '.["insecure-registries"] += ["127.0.0.1/8"]' > /etc/docker/daemon.json &&
