@@ -12,7 +12,7 @@ When you enable Content Trust, Docker pushes trust information into Notary when 
 
     ```bash
     export DOCKER_CONTENT_TRUST=1
-    export DOCKER_CONTENT_TRUST_SERVER=https://$MINIKUBE_IP:30004
+    export DOCKER_CONTENT_TRUST_SERVER=https://127.0.0.1:30004
     ```
 
 2. Push an image to Harbor. Your image will push as normal, but afterwards you'll be prompted to create passphrases for two signing keys:
@@ -22,21 +22,21 @@ When you enable Content Trust, Docker pushes trust information into Notary when 
     Make sure to set these passphrases to something that you remember, because you'll need to refer back to them. In this demo they can be the same thing, but in production it's safer to use different passphrases for each key.
 
     ```bash
-    docker tag $MINIKUBE_IP:30003/library/demo-api:secure $MINIKUBE_IP:30003/library/demo-api:signed
-    docker push $MINIKUBE_IP:30003/library/signed-demo-api:latest
+    docker tag 127.0.0.1:30002/library/demo-api:secure 127.0.0.1:30002/library/demo-api:signed
+    docker push 127.0.0.1:30002/library/signed-demo-api:latest
     ```
 
     **OSX**: If you get a "certificate signed by unknown authority" error, you need to add the Harbor CA to Docker's trusted certificates.
 
     ```bash
-    mkdir -p ~/.docker/tls/${MINIKUBE_IP}:30004
-    cp harbor-ca.crt ~/.docker/tls/${MINIKUBE_IP}:30004/ca.crt
+    mkdir -p ~/.docker/tls/127.0.0.1:30004
+    cp harbor-ca.crt ~/.docker/tls/127.0.0.1:30004/ca.crt
     ```
 
 3. Check your image signature.
 
     ```bash
-    docker trust inspect --pretty $MINIKUBE_IP:30003/library/signed-demo-api:latest
+    docker trust inspect --pretty 127.0.0.1:30002/library/signed-demo-api:latest
     ```
 
 ## Verifiable trust
@@ -54,19 +54,19 @@ You've signed the image already using the repository key, but this key doesn't p
 2. Add your key as a signer in Notary.
 
     ```bash
-    docker trust signer add --key=portierisdemo.pub portierisdemo $MINIKUBE_IP:30003/library/signed-demo-api
+    docker trust signer add --key=portierisdemo.pub portierisdemo 127.0.0.1:30002/library/signed-demo-api
     ```
 
 3. Let's look at the image that we pushed with content trust turned off, for comparison.
 
     ```bash
-    docker trust inspect --pretty $MINIKUBE_IP:30003/library/demo-api:secure
+    docker trust inspect --pretty 127.0.0.1:30002/library/demo-api:secure
     ```
 
     This image wasn't signed when we pushed it, so we get a message saying that there's no trust information:
 
     ```bash
-    No signatures or cannot access <Minikube_IP>:30003/library/demo-api:secure
+    No signatures or cannot access 127.0.0.1:30002/library/demo-api:secure
     ```
 
 4. To see the trust files stored on disk, examine the local `~/.docker/trust` directory:
@@ -88,7 +88,7 @@ You've signed the image already using the repository key, but this key doesn't p
 6. Add an ImagePullSecret for Portieris to use to pull trust data from Harbor.
 
     ```bash
-    k create secret docker-registry harbor --docker-username=admin --docker-password=kubecon1234 --docker-server=${MINIKUBE_IP}:30003 --docker-email=a@b.com
+    k create secret docker-registry harbor --docker-username=admin --docker-password=kubecon1234 --docker-server=127.0.0.1:30002 --docker-email=a@b.com
     kubectl patch serviceaccount default -p '{"imagePullSecrets":[{"name":"harbor"}]}'
     ```
 
@@ -157,11 +157,11 @@ Portieris is a Kubernetes admission controller, open sourced by IBM. When you cr
 
         ```yaml
         repositories:
-            - name: "<Minikube_IP>:30003/library/*demo-api"
+            - name: "127.0.0.1:30002/library/*demo-api"
               policy:
                 trust:
                   enabled: true
-                  trustServer: "<Minikube_IP>:30004"
+                  trustServer: "https://127.0.0.1:30004"
         ```
 
         Then save and close the file.
@@ -188,7 +188,7 @@ Portieris is a Kubernetes admission controller, open sourced by IBM. When you cr
         kubectl get pods -l app=demo-api --watch
         ```
 
-    7. Try to deploy your signed image. Change the image in demo-api.yaml to our signed image: `$MINIKUBE_IP:30003/library/signed-demo-api`
+    7. Try to deploy your signed image. Change the image in demo-api.yaml to our signed image: `127.0.0.1:30002/library/signed-demo-api`
 
         ```bash
         vi demo-api.yaml
@@ -221,11 +221,11 @@ Portieris can verify the signatures from named signers, and only allow the deplo
 
         ```yaml
         repositories:
-            - name: "<Minikube_IP>:30003/library/*demo-api"
+            - name: "127.0.0.1:30002/library/*demo-api"
             policy:
                 trust:
                 enabled: true
-                trustServer: "<Minikube_IP>:4443"
+                trustServer: "https://127.0.0.1:30004"
                 signerSecrets:
                 - name: portierisdemo
         ```
@@ -239,7 +239,7 @@ Portieris can verify the signatures from named signers, and only allow the deplo
 3. Sign the image using your `portierisdemo` key. Docker automatically signs images using all the keys that you have, so running the sign command again adds a signature for your newly created key.
 
     ```bash
-    docker trust sign $MINIKUBE_IP:30003/library/signed-demo-api:latest
+    docker trust sign 127.0.0.1:30002/library/signed-demo-api:latest
     ```
 
 4. Try to deploy your signed image once more. This time, the deployment is allowed.
