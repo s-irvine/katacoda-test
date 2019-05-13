@@ -54,4 +54,5 @@ echo "Clair DB Downloaded" &&
 
 # Wait for Kubernetes to be up
 echo -n "Waiting for Kubernetes to be ready to use" &&
-until kubectl get pod 2>/dev/null ; do echo -n . ; sleep 1 ; done ; kubectl get po
+until kubectl get pod 2>/dev/null ; do echo -n . ; sleep 1 ; done ; echo &&
+echo "Ready to go!"
