@@ -5,18 +5,18 @@ chmod a+x deploy_db.sh
 
 # Preload docker images used in the workshop (run this first so Katacoda has time to provision Kube)
 docker pull docker.io/ibmcom/portieris:0.5.1
-docker pull goharbor/harbor-adminserver:dev
-docker pull goharbor/clair-photon:dev
-docker pull goharbor/harbor-core:dev
-docker pull goharbor/harbor-jobservice:dev
-docker pull goharbor/nginx-photon:dev
-docker pull goharbor/notary-server-photon:dev
-docker pull goharbor/notary-signer-photon:dev
-docker pull goharbor/harbor-portal:dev
-docker pull goharbor/registry-photon:dev
-docker pull goharbor/harbor-registryctl:dev
-docker pull goharbor/harbor-db:dev
-docker pull goharbor/redis-photon:dev
+docker pull goharbor/harbor-adminserver:v1.7.0
+docker pull goharbor/clair-photon:v2.0.7-v1.7.0
+docker pull goharbor/harbor-core:v1.7.0
+docker pull goharbor/harbor-jobservice:v1.7.0
+docker pull goharbor/nginx-photon:v1.7.0
+docker pull goharbor/notary-server-photon:v0.6.1-v1.7.0
+docker pull goharbor/notary-signer-photon:v0.6.1-v1.7.0
+docker pull goharbor/harbor-portal:v1.7.0
+docker pull goharbor/registry-photon:v2.6.2-v1.7.0
+docker pull goharbor/harbor-registryctl:v1.7.0
+docker pull goharbor/harbor-db:v1.7.0
+docker pull goharbor/redis-photon:v1.7.0
 
 # Update docker (so we have a version with `docker trust` commands)
 systemctl stop kubelet
@@ -50,7 +50,7 @@ echo "Docker Restarted" &&
 systemctl start kubelet &&
 echo "Kubelet Restarted" &&
 
-# Pull down a Clair DB and push it into the container so we don't need to wait for it to update
+# Pull down a Clair DB so we can push it into the container later and don't need to wait for it to autoupdate
 curl -O https://raw.githubusercontent.com/s-irvine/katacoda-test/master/kube-sec-deploy/assets/clair-db/clear.sql &&
 curl -O https://raw.githubusercontent.com/s-irvine/katacoda-test/master/kube-sec-deploy/assets/clair-db/vulnerability.sql &&
 echo "Clair DB Downloaded" &&
