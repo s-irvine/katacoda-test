@@ -50,4 +50,8 @@ echo "Kubelet Restarted" &&
 # Pull down a Clair DB and push it into the container so we don't need to wait for it to update
 curl -O https://raw.githubusercontent.com/s-irvine/katacoda-test/master/kube-sec-deploy/assets/clair-db/clear.sql &&
 curl -O https://raw.githubusercontent.com/s-irvine/katacoda-test/master/kube-sec-deploy/assets/clair-db/vulnerability.sql &&
-echo "Clair DB Downloaded"
+echo "Clair DB Downloaded" &&
+
+# Wait for Kubernetes to be up
+echo -n "Waiting for Kubernetes to be ready to use" &&
+until kubectl get pod 2>/dev/null ; do echo -n . ; sleep 1 ; done ; kubectl get po
