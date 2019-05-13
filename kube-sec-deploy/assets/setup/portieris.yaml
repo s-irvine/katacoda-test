@@ -34,7 +34,6 @@ apiVersion: v1
 kind: Secret
 metadata:
   name: portieris-certs
-  namespace: ibm-system
 type: Opaque
 data:
   serverCert.pem: LS0tLS1CRUdJTiBDRVJUSUZJQ0FURS0tLS0tCk1JSUMrRENDQWVDZ0F3SUJBZ0lKQU9FOCt3TWxoYnZWTUEwR0NTcUdTSWIzRFFFQkJRVUFNQmN4RlRBVEJnTlYKQkFNTURIQnZjblJwWlhKcGMxOWpZVEFnRncweE9ERXhNalV3TURJek1EWmFHQTh5TWpreU1Ea3dPVEF3TWpNdwpObG93SXpFaE1COEdBMVVFQXd3WWNHOXlkR2xsY21sekxtbGliUzF6ZVhOMFpXMHVjM1pqTUlJQklqQU5CZ2txCmhraUc5dzBCQVFFRkFBT0NBUThBTUlJQkNnS0NBUUVBcHpRR1A1bTN1ZHM3UDJKOUdCMWJrZ244eHFaQWdHVHEKSy8vUTNpbjJobjRaVXRZcituSitKT0c1a0JKNXhxUG5PaXRNaU5HT2JLUjR5bURWVUJ5NDcxalpaZm5JVzJMSQoyVklaN2hZdUx0ZXViUXZXQ0IyOG03WjJhZ2pWVnFwMm5BN3l6a1cwS21OR3dleVBXZVFmVThRY0NVS1F0K05JCk8xbVZaOGNkMGZvL3gyMnU1TUhOVnh6TmdVWDNGbjFqeVV2bER4MlBCODlub25YZWJkbCthOXozTEFUUGw0LzgKS01pRTFOdUl5Wi9qTDJ2bVA4S3ZDWU9YV3RQRjU0ekg4enlrM2VXWXFpeVdjU1NvTk1IMzUvSWtmTDRnclZJZAprWU5iN1FXbmNvRko4dktUTGZCQnRRNUtnclRjMkVLK3pmTmtSek1hd2FuS0VXWHRIS01BWndJREFRQUJvemt3Ck56QUpCZ05WSFJNRUFqQUFNQXNHQTFVZER3UUVBd0lGNERBZEJnTlZIU1VFRmpBVUJnZ3JCZ0VGQlFjREFnWUkKS3dZQkJRVUhBd0V3RFFZSktvWklodmNOQVFFRkJRQURnZ0VCQUdGaXg5WTFqSUFVdUZtcUt2R1FOQ1R3UkhSbQpVOGdVbjBoZk0rYXE0MisxSE1ndzZsZVNSNFUrM1lXaFRoMDZzUFZ1UDQvU01CZE5pRDVZNlBsQlRiMWZCbWRCCk1qcm9CaVJBRjBkb1JZa01CbVdtSnRIaThZcWlhRkh1RDNVSTl5VmtWY1U0VUtmd0hNei9xQnFGV0loNGZMbjQKOVJOU0ZmaGpFMmRLbmI3YkV4NlZ0QWhiSmg0RDB5NDhLRSt2aDBQWnhmL2NlcFFCb0k5RHdyM0JvVXpyMWQ3bQpLN2MyczBPUzNNS085SEVjYVFDNmRmc1dzWFUwOTRRdDZ3Y2V1K2VabUp6RHNjWEFORVhGVGdDYjZnQWlYYUlaCnl0cTNZbFlwWHRwdzFSMkpIRDZNV2V4R2RLcWVSRVJ0MXNmektVUFNoUHJmZGs2L1hyNkhRbEtjeHRrPQotLS0tLUVORCBDRVJUSUZJQ0FURS0tLS0tCg==
@@ -45,7 +44,6 @@ apiVersion: securityenforcement.admission.cloud.ibm.com/v1beta1
 kind: ImagePolicy
 metadata:
   name: portieris-default-image-policy
-  namespace: ibm-system
 spec:
   repositories:
   # This policy prevents Portieris from blocking itself
@@ -72,7 +70,6 @@ apiVersion: v1
 kind: ServiceAccount
 metadata:
   name: portieris
-  namespace: ibm-system
 ---
 kind: ClusterRole
 apiVersion: rbac.authorization.k8s.io/v1
@@ -107,14 +104,12 @@ roleRef:
 subjects:
   - kind: ServiceAccount
     name: portieris
-    namespace: ibm-system
 
 ---
 apiVersion: v1
 kind: Service
 metadata:
   name: portieris
-  namespace: ibm-system
   labels:
     app: portieris
 spec:
@@ -131,7 +126,6 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: portieris
-  namespace: ibm-system
   labels:
     app: portieris
 spec:

@@ -13,7 +13,7 @@ metadata:
 type: Opaque
 data:
   secretKey: "bm90LWEtc2VjdXJlLWtleQ=="
-  HARBOR_ADMIN_PASSWORD: "SGFyYm9yMTIzNDU="
+  HARBOR_ADMIN_PASSWORD: "a3ViZWNvbjEyMzQ="
   POSTGRESQL_PASSWORD: "Y2hhbmdlaXQ="
 
   CLAIR_DB_PASSWORD: "Y2hhbmdlaXQ="
@@ -1597,4 +1597,3 @@ spec:
 
 ---
 # Source: harbor/templates/registry/registry-pvc.yaml
-
