@@ -78,7 +78,9 @@ Adding the certificates to your machine's trusted CAs is not necessary to deploy
 
 ## Install Harbor
 
-We've provided you with the YAML for Kuberentes to install Harbor. (optional) Feel free to `cat harbor.yaml`{{execute}} and have a look at the deployments and components of harbor
+We've provided you with the YAML for Kuberentes to install Harbor. 
+
+(optional) Feel free to `cat harbor.yaml`{{execute}} and have a look at the deployments and components of harbor. (optional)
 
 This YAML was generated with the help of the [harbor-helm](https://github.com/goharbor/harbor-helm/tree/1.0.0) project.
 
