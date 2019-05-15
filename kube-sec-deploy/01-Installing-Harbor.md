@@ -2,7 +2,7 @@ Harbor is a CNCF project that combines the Docker Registry, Notary and Clair. Th
 
 It's likely you may be using a hosted registry service that already supports vulnerability scanning and image signing that builds on top of the same open source software and therefore provides the same functionality. For example, IBM Cloud Container Registry and Azure Container Registry both provide Notary as a service as part of their Container Registry as a service offerings. To keep it local and consistent however, we will be using Harbor to provide this functionality.
 
-## Setup
+<!-- ## Setup
 
 When running a cluster, you would normally add the Harbor CA to your cluster's trusted CAs. Since we are using a local minikube for our cluster, we will just start minikube with making an exception for harbor as an insecure registry.
 
@@ -74,6 +74,23 @@ Adding the certificates to your machine's trusted CAs is not necessary to deploy
     docker login -u admin -p kubecon1234 $MINIKUBE_IP:30003
     ```
 
-    If you get a `400 Bad Request` error, wait a minute and try again.
+    If you get a `400 Bad Request` error, wait a minute and try again. -->
 
-4. Run `minikube ip` to get your cluster's IP address. Head to `<Minikube_IP>:30003/harbor/sign-in` to log in to the Harbor UI. Username is `admin`, password is `kubecon1234`. You may need to add a security exception in the browser as not all browsers use the system's certificate pool (where you just added the Harbor CA), and so they won't trust Harbor.
+## Install Harbor
+
+We've provided you with the YAML for Kuberentes to install Harbor. (optional) Feel free to `cat harbor.yaml`{{execute}} and have a look at the deployments and components of harbor
+
+This YAML was generated with the help of the (harbor-helm)[https://github.com/goharbor/harbor-helm] project.
+
+1. Apply the YAML to the cluster and wait for the pods to become ready (don't worry if there a couple restarts, the deployment will stabalise):
+
+`kubectl apply -f harbor.yaml`{{execute}}
+
+1. Once all of the pods are ready click the 'Harbor' tab at the top of your terminal. This will open a new browser tab/window with the dashboard of your harbor deployment. Login to the dashboard with the following credentials:
+
+```
+user: admin
+password: kubecon1234
+```
+
+Harbor is now installed! Take a moment to have a look around the UI then return to the homepage for the next step.
