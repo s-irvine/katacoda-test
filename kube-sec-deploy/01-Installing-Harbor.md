@@ -10,9 +10,9 @@ We've provided you with the YAML for Kubernetes to install Harbor.
 
 This YAML was generated with the help of the [harbor-helm](https://github.com/goharbor/harbor-helm/tree/1.0.0) project.
 
-1. Apply the YAML to the cluster and wait for the pods to become ready (don't worry if there a couple restarts, the deployment will stabilise):
+1. Apply the YAML to the cluster and wait for the pods to become ready (don't worry if there a couple restarts, the deployment will stabilise):  
 `kubectl apply -f harbor.yaml`{{execute}}
-1. Run `kubectl get pods -w` and wait until all the pods show "Running".
+1. Run `kubectl get pods -w`{{execute}} and wait until all the pods show "Running".
 1. Once all of the pods are ready, click the 'Harbor' tab at the top of your terminal. This will open a new browser tab/window with the dashboard of your harbor deployment. Login to the dashboard with the following credentials:
 
     ```creds
