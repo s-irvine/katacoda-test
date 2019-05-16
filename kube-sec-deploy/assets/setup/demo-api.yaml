@@ -19,6 +19,10 @@ spec:
       - name: demo-api
         image: "127.0.0.1:30002/library/demo-api:vulnerable"
         imagePullPolicy: "Always"
+        ports:
+        - containerPort: 9000
+          protocol: TCP
+        restartPolicy: Always
 ---
 apiVersion: v1
 kind: Service
