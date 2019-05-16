@@ -1,4 +1,4 @@
-FROM gliderlabs/alpine:3.1
+FROM sublimino/alpine-base:insecure 
 
 RUN \
   apk --update add nodejs python make g++ \
