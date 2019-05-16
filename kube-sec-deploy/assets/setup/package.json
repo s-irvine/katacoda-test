@@ -1,6 +1,6 @@
 {
   "name": "demo-api",
-  "version": "0.0.1",
+  "version": "0.0.0",
   "description": "Contrived demo app for testing CI servers",
   "main": "index.js",
   "scripts": {
@@ -8,7 +8,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git@github.com:lukebond/demo-api.git"
+    "url": "https://github.com/lukebond/demo-api"
   },
   "keywords": [
     "demo",
