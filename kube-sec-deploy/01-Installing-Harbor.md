@@ -1,12 +1,12 @@
 Harbor is a CNCF project that combines the Docker Registry, Notary and Clair. This gives you image hosting, signing and scanning out of the box. We won't focus on Harbor too much as we have limited time but you can find out more [here](https://github.com/goharbor/harbor/blob/master/README.md).
 
-It's likely you may be using a hosted registry service that already supports vulnerability scanning and image signing that builds on top of the same open source software and therefore provides the same functionality. For example, IBM Cloud Container Registry and Azure Container Registry both provide Notary as a service as part of their Container Registry as a service offerings. To keep it local and consistent however, we will be using Harbor to provide this functionality.
+When you're running in production, it's likely you'll be using a hosted registry service that already supports vulnerability scanning and image signing as built in features. Often, these features build on top of the same open source software and therefore provides the same functionality. For example, IBM Cloud Container Registry and Azure Container Registry both provide Notary as a service as part of their Container Registry as a service offerings. To keep it local and consistent however, we will be using Harbor to provide this functionality.
 
 ## Install Harbor
 
 We've provided you with the YAML for Kubernetes to install Harbor.
 
-(Optional) Feel free to `cat harbor.yaml`{{execute}} and have a look at the deployments and components of harbor. (Optional)
+> (Optional) Feel free to `cat harbor.yaml`{{execute}} and have a look at the deployments and components of Harbor.
 
 This YAML was generated with the help of the [harbor-helm](https://github.com/goharbor/harbor-helm/tree/1.0.0) project.
 
