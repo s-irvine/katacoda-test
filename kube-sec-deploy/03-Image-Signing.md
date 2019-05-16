@@ -98,13 +98,13 @@ Portieris is a Kubernetes admission controller, open sourced by IBM. When you cr
 
 1. Install Portieris.
 
-    2. Deploy Portieris.
+    1. Deploy Portieris.
 
         ```bash
         kubectl apply -f portieris.yaml
         ```
 
-    3. Wait for Portieris to start. This might take a couple of minutes.
+    1. Wait for Portieris to start. This might take a couple of minutes.
 
         ```bash
         kubectl get pods --watch
@@ -117,7 +117,7 @@ Portieris is a Kubernetes admission controller, open sourced by IBM. When you cr
         portieris-84f9cb7746-bxxqm   1/1     Running   0          18s
         ```
 
-    4. Set up the Mutating Admission Webhook for Portieris. This tells Kubernetes to ask Portieris if a given resource is OK to deploy.
+    1. Set up the Mutating Admission Webhook for Portieris. This tells Kubernetes to ask Portieris if a given resource is OK to deploy.
 
         ```bash
         kubectl apply -f webhook.yaml

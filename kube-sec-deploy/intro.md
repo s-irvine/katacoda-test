@@ -11,5 +11,3 @@ If you're completing the steps for this workshop in the scheduled session at Kub
 If you're completing the steps at the conference, but outside the slot, the friendly faces at the IBM Cloud booth have contact information for the speakers and can pass on your questions.
 
 If you're not at KubeCon+CloudNativeCon, or you're finishing this workshop after the conference, you can contact the speakers by using the #container-registry channel in the IBM Kubernetes Service Slack.
-
-Alternatively, tweet us at &lt;TODO add Twitter handles&gt;
