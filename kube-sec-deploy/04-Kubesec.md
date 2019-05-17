@@ -55,4 +55,4 @@ Our deployment has just been created despite failing the checks.
 `kubectl delete -f deploy/webhook.yaml`{{execute}}
 `kubectl create -f deploy/webhook.yaml`{{execute}}
 `kubectl get pods --selector=app=nginx`{{execute}}
-Notice that the existing deployment is not affected - admission controllers are only called when an API call is "admitted" to the API server.
+Notice that the existing deployment is not affected - admission controllers are only called when an pod is "admitted" to the API server.
