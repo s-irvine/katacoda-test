@@ -25,8 +25,6 @@ Error from server (InternalError): error when creating "./test/deployment.yaml":
 
 1. The deployment is insecure. Let's check why. Create a Bash function to POST YAML to <https://kubesec.io.>  
 
-> all sensitive configuration should live in `secrets` -  never leak configuration to a remote service.  
-
 ```bash
 kubesec() {
 local FILE="${1:-}";
@@ -42,6 +40,8 @@ https://kubesec.io/
 }
 kubesec ./test/deployment.yaml
 ```{{copy}}
+
+> all sensitive configuration should live in `secrets` -  never leak configuration to a remote service.
 
 1. The problem is `containers[] .securityContext .privileged == true` - running a privileged pod.  
 Although this is dangerous, perhaps we have an "urgent business requirement" (:facepalm:). Let's edit the admission controller to allow an insecure deployment:  
