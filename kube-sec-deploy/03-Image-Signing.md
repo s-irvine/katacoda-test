@@ -4,6 +4,13 @@ Notary is a tool that manages signatures. It implements The Update Framework (TU
 
 Using Notary, you can digitally sign and then verify the content of your container images at deploy time via their digest. Notary is typically integrated alongside a Container Registry to provide this functionality. In this tutorial, we use Harbor as both the Container Registry and the Notary server.
 
+## Configure Harbor
+
+1. Open the Harbor UI.
+1. Select the library project, and then click the Configuration tab.
+1. Select `Enable content trust`
+1. Click `Save`
+
 ## Signing images
 
 When you enable Content Trust, Docker pushes trust information into Notary when you push your image.
@@ -13,7 +20,7 @@ When you enable Content Trust, Docker pushes trust information into Notary when 
     ```bash
     export DOCKER_CONTENT_TRUST=1
     export DOCKER_CONTENT_TRUST_SERVER=https://127.0.0.1:30004
-    ```
+    ```{{execute}}
 
 2. Push an image to Harbor. Your image will push as normal, but afterwards you'll be prompted to create passphrases for two signing keys:
     - Your root key, which is used to initialize repositories.
@@ -23,21 +30,21 @@ When you enable Content Trust, Docker pushes trust information into Notary when 
 
     ```bash
     docker tag 127.0.0.1:30002/library/demo-api:secure 127.0.0.1:30002/library/demo-api:signed
-    docker push 127.0.0.1:30002/library/signed-demo-api:latest
-    ```
+    docker push 127.0.0.1:30002/library/demo-api:signed
+    ```{{execute}}
 
     **OSX**: If you get a "certificate signed by unknown authority" error, you need to add the Harbor CA to Docker's trusted certificates.
 
     ```bash
     mkdir -p ~/.docker/tls/127.0.0.1:30004
     cp harbor-ca.crt ~/.docker/tls/127.0.0.1:30004/ca.crt
-    ```
+    ```{{execute}}
 
 3. Check your image signature.
 
     ```bash
-    docker trust inspect --pretty 127.0.0.1:30002/library/signed-demo-api:latest
-    ```
+    docker trust inspect --pretty 127.0.0.1:30002/library/demo-api:signed
+    ```{{execute}}
 
 ## Verifiable trust
 
@@ -47,21 +54,21 @@ You've signed the image already using the repository key, but this key doesn't p
 
     ```bash
     docker trust key generate portierisdemo
-    ```
+    ```{{execute}}
 
     The private key goes in to your Docker Content Trust directory. The public key is saved to `portierisdemo.pub` in your working directory.
 
 2. Add your key as a signer in Notary.
 
     ```bash
-    docker trust signer add --key=portierisdemo.pub portierisdemo 127.0.0.1:30002/library/signed-demo-api
-    ```
+    docker trust signer add --key=portierisdemo.pub portierisdemo 127.0.0.1:30002/library/demo-api:signed
+    ```{{execute}}
 
 3. Let's look at the image that we pushed with content trust turned off, for comparison.
 
     ```bash
     docker trust inspect --pretty 127.0.0.1:30002/library/demo-api:secure
-    ```
+    ```{{execute}}
 
     This image wasn't signed when we pushed it, so we get a message saying that there's no trust information:
 
@@ -73,7 +80,7 @@ You've signed the image already using the repository key, but this key doesn't p
 
     ```bash
     tree ~/.docker/trust
-    ```
+    ```{{execute}}
 
     Notary caches signatures locally so that you don't need to go to the server each time. Cached signature data is stored in `~/.docker/trust/tuf` in folders representing the image name.
 
@@ -83,14 +90,14 @@ You've signed the image already using the repository key, but this key doesn't p
 
     ```bash
     kubectl delete deployment demo-api
-    ```
+    ```{{execute}}
 
 6. Add an ImagePullSecret for Portieris to use to pull trust data from Harbor.
 
     ```bash
-    k create secret docker-registry harbor --docker-username=admin --docker-password=kubecon1234 --docker-server=127.0.0.1:30002 --docker-email=a@b.com
+    kubectl create secret docker-registry harbor --docker-username=admin --docker-password=kubecon1234 --docker-server=127.0.0.1:30002 --docker-email=a@b.com
     kubectl patch serviceaccount default -p '{"imagePullSecrets":[{"name":"harbor"}]}'
-    ```
+    ```{{execute}}
 
 ## Portieris
 
@@ -102,13 +109,13 @@ Portieris is a Kubernetes admission controller, open sourced by IBM. When you cr
 
         ```bash
         kubectl apply -f portieris.yaml
-        ```
+        ```{{execute}}
 
     1. Wait for Portieris to start. This might take a couple of minutes.
 
         ```bash
         kubectl get pods --watch
-        ```
+        ```{{execute}}
 
         Wait for there to be at least one `portieris` pod running:
 
@@ -121,7 +128,7 @@ Portieris is a Kubernetes admission controller, open sourced by IBM. When you cr
 
         ```bash
         kubectl apply -f webhook.yaml
-        ```
+        ```{{execute}}
 
     Portieris installs two custom Kubernetes resources for managing it: ImagePolicies and ClusterImagePolicies. If an ImagePolicy exists in the same Kubernetes namespace as your resources, Portieris uses that to decide what rules to enforce on your resources. Otherwise, Portieris uses the ClusterImagePolicy.
 
@@ -130,14 +137,14 @@ Portieris is a Kubernetes admission controller, open sourced by IBM. When you cr
 
         ```bash
         kubectl get ClusterImagePolicies
-        ```
+        ```{{execute}}
 
         One ClusterImagePolicy is shown: `portieris-default-cluster-image-policy`.
     2. Edit the `portieris-default-cluster-image-policy` policy.
 
         ```bash
         kubectl edit ClusterImagePolicy portieris-default-cluster-image-policy
-        ```
+        ```{{execute}}
 
         Look at the `spec` section, and the `repositories` subsection inside it. One image is shown, with `name: "*"` and `policy: trust: enabled: true`. `*` is a wildcard character, so this policy matches any image.
 
@@ -149,7 +156,7 @@ Portieris is a Kubernetes admission controller, open sourced by IBM. When you cr
 
         ```bash
         kubectl apply -f demo-api.yaml
-        ```
+        ```{{execute}}
 
         Portieris doesn't do anything with the deployment, so it's allowed to be deployed.
 
@@ -171,7 +178,7 @@ Portieris is a Kubernetes admission controller, open sourced by IBM. When you cr
         ```bash
         kubectl delete deployment demo-api
         kubectl apply -f demo-api.yaml
-        ```
+        ```{{execute}}
 
         The deployment is rejected because it isn't signed.
 
@@ -186,16 +193,21 @@ Portieris is a Kubernetes admission controller, open sourced by IBM. When you cr
         ```bash
         kubectl delete pods -l app=demo-api
         kubectl get pods -l app=demo-api --watch
-        ```
+        ```{{execute}}
 
     7. Try to deploy your signed image. Change the image in demo-api.yaml to our signed image: `127.0.0.1:30002/library/signed-demo-api`
 
         ```bash
         vi demo-api.yaml
-        kubectl apply -f demo-api.yaml
         ```
+        
+Then deploy it:
+        
+        ```bash
+        kubectl apply -f demo-api.yaml
+        ```{{execute}}
 
-        This deployment is allowed.
+This deployment should now be allowed.
 
 You have signed your image and configured Portieris to require image signatures. You have seen that when it enforces content trust, Portieris modifies the image name to the digest of the signed image.
 
@@ -209,13 +221,13 @@ Portieris can verify the signatures from named signers, and only allow the deplo
 
         ```bash
         kubectl create secret generic portierisdemo --from-literal=name=portierisdemo --from-file=publicKey=portierisdemo.pub
-        ```
+        ```{{execute}}
 
     2. Edit the ClusterImagePolicy to enforce it.
 
         ```bash
         kubectl edit clusterimagepolicy portieris-default-cluster-image-policy
-        ```
+        ```{{execute}}
 
         Add the signer secret as a required key for our demo-api repository:
 
@@ -240,7 +252,7 @@ Portieris can verify the signatures from named signers, and only allow the deplo
 
     ```bash
     docker trust sign 127.0.0.1:30002/library/signed-demo-api:latest
-    ```
+    ```{{execute}}
 
 4. Try to deploy your signed image once more. This time, the deployment is allowed.
 
