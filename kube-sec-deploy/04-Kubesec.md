@@ -1,5 +1,3 @@
-# Kubesec
- 
 Kubesec identifies security risks in your Kubernetes configuration and quantifies them with risk scores.
 
 ## Install Kubesec
