@@ -42,8 +42,13 @@ Portieris is a Kubernetes admission controller, open sourced by IBM. When you cr
 
     ```bash
     kubectl create secret docker-registry icr-us --docker-username=iamapikey --docker-password=<your_api_key> --docker-server=us.icr.io --docker-email=a@b.com
-    kubectl patch serviceaccount default -p '{"imagePullSecrets":[{"name":"icr-us"}]}'
     ```
+
+    Patch your image pull secret into the default service account, so that you don't need to specify it in your pod spec.
+
+    ```bash
+    kubectl patch serviceaccount default -p '{"imagePullSecrets":[{"name":"icr-us"}]}'
+    ```{{execute}}
 
 1. Log in to Container Registry. Replace `<your_api_key>` with your API key.
 
@@ -59,6 +64,9 @@ Portieris is a Kubernetes admission controller, open sourced by IBM. When you cr
 
     ```bash
     docker tag 127.0.0.1:30002/library/demo-api:vulnerable us.icr.io/<your_namespace>/demo-api:vulnerable
+    ```
+
+    ```bash
     docker push us.icr.io/<your_namespace>/demo-api:vulnerable
     ```
 
@@ -67,7 +75,7 @@ Portieris is a Kubernetes admission controller, open sourced by IBM. When you cr
     ```bash
     export DOCKER_CONTENT_TRUST=1
     export DOCKER_CONTENT_TRUST_SERVER=https://us.icr.io:4443
-    ```
+    ```{{execute}}
 
 1. Push your signed image into Container Registry. You will be prompted to create a new repository key.
 
@@ -147,6 +155,10 @@ Portieris is a Kubernetes admission controller, open sourced by IBM. When you cr
 
     4. Let's enable trust enforcement for our image. Create a new element in the `repositories` list, after the `*`:
 
+        ```bash
+        kubectl edit ClusterImagePolicy portieris-default-cluster-image-policy
+        ```{{execute}}
+
         ```yaml
         repositories:
             - name: "us.icr.io/*"
@@ -170,6 +182,8 @@ Portieris is a Kubernetes admission controller, open sourced by IBM. When you cr
         admission webhook "trust.hooks.securityenforcement.admission.cloud.ibm.com" denied the request: Deny, failed to get content trust information: No valid trust data for vulnerable
         ```
 
+        Because your new deployment was rejected, the deployment in the cluster stays the same.
+
     6. Portieris doesn't prevent pods from restarting, even if the pod no longer satisfies your policy. This prevents you from getting an outage if your pods crash but they don't match your policy.
 
         Delete the pods in your deployment, and then watch as they are re-created.
@@ -191,7 +205,7 @@ Portieris is a Kubernetes admission controller, open sourced by IBM. When you cr
         kubectl apply -f demo-api.yaml
         ```{{execute}}
 
-This deployment should now be allowed.
+        This deployment should now be allowed.
 
 You have signed your image and configured Portieris to require image signatures. You have seen that when it enforces content trust, Portieris modifies the image name to the digest of the signed image.
 
