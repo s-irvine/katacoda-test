@@ -139,7 +139,7 @@ spec:
       serviceAccountName: portieris
       containers:
         - name: portieris
-          image: "docker.io/ibmcom/portieris:0.5.1"
+          image: "docker.io/ibmcom/portieris:0.5.2"
           imagePullPolicy: IfNotPresent
           ports:
             - name: http
