@@ -129,4 +129,16 @@ When you sign an image, the unsigned versions of the image are still present in 
 1. Check that the pod has come up now. The image is signed, so Harbor has allowed it to deploy.
     `kubectl get pods`{{execute}}
 
+1. Switch off Harbor's signing enforcement so that it doesn't interfere with later steps.
+
+    1. Open the Harbor UI.
+
+    1. Select the library project, and then click the Configuration tab.
+
+    1. Deselect `Enable content trust`.
+
+    1. Deselect `Prevent vulnerable images from running` if it is selected.
+
+    1. Click `Save`.
+
 You have used Harbor to verify that your images are signed before they can be deployed to the cluster. If image signing is implemented in your pipeline as a mark of confidence in the image contents, you can verify that images are trusted before they are deployed. In the next, optional step, you'll use Portieris to configure content trust for repositories in public cloud, and to verify the signature using a signer's public key before allowing a deployment.
