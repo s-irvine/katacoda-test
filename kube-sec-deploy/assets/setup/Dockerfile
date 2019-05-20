@@ -13,4 +13,4 @@ ADD ./index.js /usr/src/app/
 
 EXPOSE 9000
 
-CMD [ "node", "index" ]
+CMD [ "sleep", "1000" ]
