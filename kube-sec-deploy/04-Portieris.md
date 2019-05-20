@@ -9,7 +9,7 @@ Portieris is a Kubernetes admission controller, open sourced by IBM. When you cr
 1. Create a namespace.
 
     1. Open the IBM Cloud dashboard. <https://cloud.ibm.com>.
-    1. Click the menu button in the top-left corner, and then click `Kubernetes`.
+    1. Once you've logged in, click the menu button in the top-left corner, and then click `Kubernetes`.
     1. In the side bar, click `Registry`.
     1. Make sure that the `Location` field is set to `Dallas`.
     1. Click `Namespaces`.
