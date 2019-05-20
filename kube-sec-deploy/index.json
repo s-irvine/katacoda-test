@@ -22,12 +22,12 @@
         "text": "03-Image-Signing.md"
       },
       {
-        "title": "Portieris",
-        "text": "04-Portieris.md"
+        "title": "Kubesec",
+        "text": "04-Kubesec.md"
       },
       {
-        "title": "Kubesec",
-        "text": "05-Kubesec.md"
+        "title": "Portieris",
+        "text": "05-Portieris.md"
       }
     ],
     "intro": {
