@@ -6,15 +6,78 @@ Portieris is a Kubernetes admission controller, open sourced by IBM. When you cr
 
 ## Setting up IBM Cloud Container Registry
 
-TODO
+1. Create a namespace.
 
-* Create a namespace
-* Reconfigure Notary
-* Push demo-api
-* Create IAM API Key
-* Create ImagePullSecret using the API key
+    1. Open the IBM Cloud dashboard. <https://cloud.ibm.com>.
+    1. Click the menu button in the top-left corner, and then click `Kubernetes`.
+    1. In the side bar, click `Registry`.
+    1. Make sure that the `Location` field is set to `Dallas`.
+    1. Click `Namespaces`.
+    1. Click `Create namespace`.
+    1. Enter a name for your namespace, and then click `Create`. Remember your namespace, because you'll use that later.
+    1. Your namespace appears in the list.
 
-TODO below use icr.io image names
+1. Create an IAM API key and grant it access to IBM Cloud Container Registry. IBM Cloud IAM Service IDs allow you to create API keys for your applications and create policies to control their access.
+
+    1. In the top bar of the IBM Cloud dashboard, click `Manage`, then `Access (IAM)`.
+    1. In the side bar, click `Service IDs`.
+    1. Click `Create`. Enter a name for your service ID, and then click `Create`. Your new service ID appears in the list.
+    1. Click on your service ID. The configuration page for your service ID appears.
+    1. Create an IAM policy to allow your service ID to access Container Registry.
+        1. Click `Access policies`, and then `Assign access`.
+        1. Click `Assign access to resources`.
+        1. In the `Service` box, select `Container Registry`. You can start typing in the box to filter the list.
+
+            > Tip: Once you select the service, more options appear that allow you to refine the access further. For simplicity, we'll leave these boxes empty to grant access to all images in your account.
+        1. In the `Select roles` field, check the `Manager` box.
+        1. Click `Assign`. The new `Manager` policy is shown in the list.
+    1. Create an API key to allow you to log in to Container Registry.
+        1. On the configuration page for your service ID, click on `API keys`.
+        1. Click `Create`. Enter a name for your API key, and then click `Create`. A dialog appears containing your new API key.
+        1. Use any of the options in the dialog to note down your API key. You'll need it later.
+
+            > Tip: If you dismiss this dialog without taking note of your API key, you can't retrieve that API key later. You can create another API key and use that instead.
+
+1. Create an Image Pull Secret with your API key. Replace `<your_api_key>` with your API key from the previous step.
+
+    ```bash
+    kubectl create secret docker-registry icr-us --docker-username=iamapikey --docker-password=<your_api_key> --docker-server=us.icr.io --docker-email=a@b.com
+    kubectl patch serviceaccount default -p '{"imagePullSecrets":[{"name":"icr-us"}]}'
+    ```
+
+1. Log in to Container Registry. Replace `<your_api_key>` with your API key.
+
+    ```bash
+    docker login -u iamapikey -p <your_api_key> us.icr.io
+    ```
+
+1. Push your vulnerable image into Container Registry, without signing it. Replace `<your_namespace>` with the namespace that you created earlier.
+
+    ```bash
+    unset DOCKER_CONTENT_TRUST
+    ```{{execute}}
+
+    ```bash
+    docker tag 127.0.0.1:30002/library/demo-api:vulnerable us.icr.io/<your_namespace>/demo-api:vulnerable
+    docker push us.icr.io/<your_namespace>/demo-api:vulnerable
+    ```
+
+1. Enable content trust for Container Registry.
+
+    ```bash
+    export DOCKER_CONTENT_TRUST=1
+    export DOCKER_CONTENT_TRUST_SERVER=https://us.icr.io:4443
+    ```
+
+1. Push your signed image into Container Registry. You will be prompted to create a new repository key.
+
+    ```bash
+    docker tag 127.0.0.1:30002/library/demo-api:signed us.icr.io/<your_namespace>/demo-api:signed
+    ```
+
+    ```bash
+    docker push us.icr.io/<your_namespace>/demo-api:signed
+    ```
 
 ## Setting up Portieris
 
@@ -68,7 +131,13 @@ TODO below use icr.io image names
 
         When the policy is not enabled, we don't apply any trust requirement. Essentially, Portieris doesn't do anything at this point. Let's prove that.
 
-    3. Try to deploy an unsigned image to the cluster. We've created a deployment definition for you.
+    3. Try to deploy your unsigned image to the cluster. Edit the image name in `demo-api.yaml` to your image in Container Registry, and then deploy it to your cluster.
+
+        ```bash
+        vi demo-api.yaml
+        ```
+
+        > Tip: Your unsigned image name in Container Registry looks like `us.icr.io/<your_namespace>/demo-api:vulnerable`. Replace `<your_namespace>` with your Container Registry namespace.
 
         ```bash
         kubectl apply -f demo-api.yaml
@@ -80,11 +149,10 @@ TODO below use icr.io image names
 
         ```yaml
         repositories:
-            - name: "127.0.0.1:30002/library/*demo-api"
+            - name: "us.icr.io/*"
               policy:
                 trust:
                   enabled: true
-                  trustServer: "https://127.0.0.1:30004"
         ```
 
         Then save and close the file.
@@ -99,7 +167,7 @@ TODO below use icr.io image names
         The deployment is rejected because it isn't signed.
 
         ```text
-        admission webhook "trust.hooks.securityenforcement.admission.cloud.ibm.com" denied the request: Deny, failed to get content trust information: No valid trust data for secure
+        admission webhook "trust.hooks.securityenforcement.admission.cloud.ibm.com" denied the request: Deny, failed to get content trust information: No valid trust data for vulnerable
         ```
 
     6. Portieris doesn't prevent pods from restarting, even if the pod no longer satisfies your policy. This prevents you from getting an outage if your pods crash but they don't match your policy.
@@ -111,7 +179,7 @@ TODO below use icr.io image names
         kubectl get pods -l app=demo-api --watch
         ```{{execute}}
 
-    7. Try to deploy your signed image. Change the image in demo-api.yaml to our signed image: `127.0.0.1:30002/library/signed-demo-api`
+    7. Try to deploy your signed image. Change the image in demo-api.yaml to our signed image: `us.icr.io/<your_namespace>/demo-api:signed`
 
         ```bash
         vi demo-api.yaml
@@ -149,11 +217,10 @@ Portieris can verify the signatures from named signers, and only allow the deplo
 
         ```yaml
         repositories:
-            - name: "127.0.0.1:30002/library/*demo-api"
+            - name: "us.icr.io/*"
             policy:
                 trust:
                 enabled: true
-                trustServer: "https://127.0.0.1:30004"
                 signerSecrets:
                 - name: portierisdemo
         ```
@@ -167,8 +234,8 @@ Portieris can verify the signatures from named signers, and only allow the deplo
 3. Sign the image using your `portierisdemo` key. Docker automatically signs images using all the keys that you have, so running the sign command again adds a signature for your newly created key.
 
     ```bash
-    docker trust sign 127.0.0.1:30002/library/signed-demo-api:latest
-    ```{{execute}}
+    docker trust sign us.icr.io/<your_namespace>/demo-api:signed
+    ```
 
 4. Try to deploy your signed image once more. This time, the deployment is allowed.
 
