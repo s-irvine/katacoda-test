@@ -42,7 +42,7 @@ Portieris is a Kubernetes admission controller, open sourced by IBM. When you cr
 
     ```bash
     kubectl create secret docker-registry icr-us --docker-username=iamapikey --docker-password=<your_api_key> --docker-server=us.icr.io --docker-email=a@b.com
-    ```
+    ```{{copy}}
 
     Patch your image pull secret into the default service account, so that you don't need to specify it in your pod spec.
 
@@ -54,7 +54,7 @@ Portieris is a Kubernetes admission controller, open sourced by IBM. When you cr
 
     ```bash
     docker login -u iamapikey -p <your_api_key> us.icr.io
-    ```
+    ```{{copy}}
 
 1. Push your vulnerable image into Container Registry, without signing it. Replace `<your_namespace>` with the namespace that you created earlier.
 
@@ -64,11 +64,11 @@ Portieris is a Kubernetes admission controller, open sourced by IBM. When you cr
 
     ```bash
     docker tag 127.0.0.1:30002/library/demo-api:vulnerable us.icr.io/<your_namespace>/demo-api:vulnerable
-    ```
+    ```{{copy}}
 
     ```bash
     docker push us.icr.io/<your_namespace>/demo-api:vulnerable
-    ```
+    ```{{copy}}
 
 1. Enable content trust for Container Registry.
 
@@ -81,11 +81,11 @@ Portieris is a Kubernetes admission controller, open sourced by IBM. When you cr
 
     ```bash
     docker tag 127.0.0.1:30002/library/demo-api:signed us.icr.io/<your_namespace>/demo-api:signed
-    ```
+    ```{{copy}}
 
     ```bash
     docker push us.icr.io/<your_namespace>/demo-api:signed
-    ```
+    ```{{copy}}
 
 ## Setting up Portieris
 
@@ -143,7 +143,7 @@ Portieris is a Kubernetes admission controller, open sourced by IBM. When you cr
 
         ```bash
         vi demo-api.yaml
-        ```
+        ```{{execute}}
 
         > Tip: Your unsigned image name in Container Registry looks like `us.icr.io/<your_namespace>/demo-api:vulnerable`. Replace `<your_namespace>` with your Container Registry namespace.
 
@@ -165,7 +165,7 @@ Portieris is a Kubernetes admission controller, open sourced by IBM. When you cr
               policy:
                 trust:
                   enabled: true
-        ```
+        ```{{copy}}
 
         Then save and close the file.
 
@@ -197,7 +197,7 @@ Portieris is a Kubernetes admission controller, open sourced by IBM. When you cr
 
         ```bash
         vi demo-api.yaml
-        ```
+        ```{{execute}}
 
         Then deploy it:
 
@@ -237,7 +237,7 @@ Portieris can verify the signatures from named signers, and only allow the deplo
                 enabled: true
                 signerSecrets:
                 - name: portierisdemo
-        ```
+        ```{{copy}}
 
 2. Try to deploy your signed image again. This time, the deployment is rejected. Your image is signed, but not by the `portierisdemo` signer.
 
@@ -249,7 +249,7 @@ Portieris can verify the signatures from named signers, and only allow the deplo
 
     ```bash
     docker trust sign us.icr.io/<your_namespace>/demo-api:signed
-    ```
+    ```{{copy}}
 
 4. Try to deploy your signed image once more. This time, the deployment is allowed.
 
