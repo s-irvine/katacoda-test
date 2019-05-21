@@ -14,6 +14,8 @@ docker pull goharbor/registry-photon:v2.6.2-v1.7.0
 docker pull goharbor/harbor-registryctl:v1.7.0
 docker pull goharbor/harbor-db:v1.7.0
 docker pull goharbor/redis-photon:v1.7.0
+docker pull sublimino/alpine-base:insecure
+docker pull alpine:3.4
 
 # Make Clair database deploy script executable (Katacoda doesn't preserve file permissions)
 chmod a+x deploy_db.sh
