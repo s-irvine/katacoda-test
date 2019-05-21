@@ -1,5 +1,3 @@
-# Kubesec
- 
 Kubesec identifies security risks in your Kubernetes configuration and quantifies them with risk scores.
 
 ## Install Kubesec
@@ -21,7 +19,7 @@ The secrets that are mounted into the admission controller are in `webhook-certs
 
 1. Try to deploy an insecure deployment:  
 `kubectl apply -f ./test/deployment.yaml`{{execute}}  
-We should recive:  
+We should receive:  
 ```bash
 Error from server (InternalError): error when creating "./test/deployment.yaml": Internal error occurred: admission webhook "deployment.admission.kubesc.io" denied the request: deployment-test score is -30, deployment minimum accepted score is 0
 ```
