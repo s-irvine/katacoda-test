@@ -1,0 +1,11 @@
+{
+	"title": "Kubernetes Secure Deployment",
+	"icon": "fa-kubernetes",
+	"courses": [{
+            "pathway_id": "controlplane",
+            "id": "kube-sec-deploy",
+			"course_id": "kube-sec-deploy",
+			"title": "Kubernetes Secure Deployment"
+        }
+    ]
+}
