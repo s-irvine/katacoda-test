@@ -22,7 +22,7 @@ chmod a+x deploy_db.sh
 
 # Update docker (so we have a version with `docker trust` commands)
 systemctl stop kubelet
-apt-get remove -y docker docker-engine docker.io containerd runc 
+apt-get remove -y docker docker-engine docker.io containerd runc
 apt-get update &&
 apt-get install -y \
         apt-transport-https \
@@ -52,8 +52,6 @@ systemctl restart docker &&
 echo "Docker Restarted" &&
 systemctl start kubelet &&
 echo "Kubelet Restarted" &&
-/opt/launch-kubeadm.sh && 
-kubectl taint nodes --all node-role.kubernetes.io/master- &&
 
 # Pull down a Clair DB so we can push it into the container later and don't need to wait for it to autoupdate
 curl -O https://raw.githubusercontent.com/s-irvine/katacoda-test/master/kube-sec-deploy/assets/clair-db/clear.sql &&
