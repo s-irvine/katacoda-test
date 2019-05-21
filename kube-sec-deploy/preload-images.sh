@@ -52,6 +52,8 @@ systemctl restart docker &&
 echo "Docker Restarted" &&
 systemctl start kubelet &&
 echo "Kubelet Restarted" &&
+/opt/launch-kubeadm.sh && 
+kubectl taint nodes --all node-role.kubernetes.io/master- &&
 
 # Pull down a Clair DB so we can push it into the container later and don't need to wait for it to autoupdate
 curl -O https://raw.githubusercontent.com/s-irvine/katacoda-test/master/kube-sec-deploy/assets/clair-db/clear.sql &&
