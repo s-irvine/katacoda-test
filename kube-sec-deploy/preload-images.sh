@@ -20,7 +20,7 @@ docker pull alpine:3.4
 # Make Clair database deploy script executable (Katacoda doesn't preserve file permissions)
 chmod a+x deploy_db.sh
 
-docker version\
+docker version 
 # Update docker (so we have a version with `docker trust` commands)
 systemctl stop kubelet
 apt-get update &&
