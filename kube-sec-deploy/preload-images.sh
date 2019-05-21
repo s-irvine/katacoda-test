@@ -22,7 +22,7 @@ chmod a+x deploy_db.sh
 
 # Update docker (so we have a version with `docker trust` commands)
 systemctl stop kubelet
-apt-get remove -y docker docker-engine docker.io containerd runc &&
+apt-get remove -y docker docker-engine docker.io containerd runc
 apt-get update &&
 apt-get install -y \
         apt-transport-https \
