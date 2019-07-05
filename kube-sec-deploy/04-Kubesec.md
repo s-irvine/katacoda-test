@@ -38,7 +38,7 @@ curl --silent \
 https://kubesec.io/
 }
 kubesec ./test/deployment.yaml
-```{{copy}}
+```{{execute}}
 > all sensitive configuration should live in `secrets` -  never leak configuration to a remote service.
 1. The problem is `containers[] .securityContext .privileged == true` - running a privileged pod.  
 Although this is dangerous, perhaps we have an "urgent business requirement" (:facepalm:). Let's edit the admission controller to allow an insecure deployment:  
@@ -46,10 +46,10 @@ Although this is dangerous, perhaps we have an "urgent business requirement" (:f
 `kubectl delete -f deploy/webhook.yaml`{{execute}}
 `kubectl create -f deploy/webhook.yaml`{{execute}}
 1. Now anything with a score above `-100` will be allowed into the cluster! This is a bad thing. Let's test it:  
-`kubectl apply -f ./test/deployment.yaml`  
+`kubectl apply -f ./test/deployment.yaml`{{execute}}
 Our deployment has just been created despite failing the checks.
 1. Now that we've deployed an insecure pod, let's change the admission controller risk threshold back to `0`.  
-`sed -i 's,-min-score=.*,-min-score=0,' deploy/webhook.yaml`
+`sed -i 's,-min-score=.*,-min-score=0,' deploy/webhook.yaml`{{execute}}
 `kubectl delete -f deploy/webhook.yaml`{{execute}}
 `kubectl create -f deploy/webhook.yaml`{{execute}}
 `kubectl get pods --selector=app=nginx`{{execute}}
