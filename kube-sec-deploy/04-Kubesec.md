@@ -10,7 +10,7 @@ Kubesec identifies security risks in your Kubernetes configuration and quantifie
 `kubectl label namespaces default kubesec-validation=enabled`{{execute}}  
 This deploys a `kubesec-webhook` pod in the `kubesec` namespace, a webhook admission controller configuration for the API server, and the secrets for secure communication.
 1. Examine the webhook admission controller that's just been deployed:  
-less deploy/webhook-registration.yaml`{{execute}}
+`less deploy/webhook-registration.yaml`{{execute}}
 1. Find the `namespaceSelector` that corresponds to the label applied to the `default` namespace above. This is the only link between the admission controller and a namespace.  
 Notice a CA bundle is required. This is because pod manifests may contain secrets in environment variables, or sensitive information about itself or other services. To ensure that the Kubernetes API trusts the admission controller, the CA bundle of the HTTPS endpoint that the API server POSTs to must be declared to establish a trust relationship between them.  
 The secrets that are mounted into the admission controller are in `webhook-certs.yaml`, and the actual pod that's deployed is in `webhook.yaml`.
