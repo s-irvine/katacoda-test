@@ -122,7 +122,7 @@ When you sign an image, the unsigned versions of the image are still present in 
     Failed to pull image "127.0.0.1:30002/library/demo-api:vulnerable": rpc error: code = Unknown desc = Error response from daemon: unknown:  The image is not signed in Notary.
     ```
 
-1. Change the deployment yaml `demo-api.yaml` to reference your signed, secure image, with the `secure` tag and redeploy:  
+1. Change the deployment yaml `demo-api.yaml` to reference your signed, secure image, with the `signed` tag and redeploy:  
     `vi demo-api.yaml`{{execute}}  
     `kubectl apply -f demo-api.yaml`{{execute}}
 
